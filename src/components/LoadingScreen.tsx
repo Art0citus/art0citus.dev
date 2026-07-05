@@ -50,7 +50,7 @@ export default function LoadingScreen({
 
         return prev + 1;
       });
-    }, 21); // Matches  Spider-Man GIF
+    }, 15); // Matches  Spider-Man GIF
 
     return () => {
       clearInterval(interval);
@@ -75,7 +75,7 @@ export default function LoadingScreen({
   return <h1>Home Page</h1>;
   }*/}
   return (
-    <div className="flex inset-0 z-50 w-full justify-center bg-white px-4 sm:px-6 lg:px-8">
+    <div className="flex inset-0 z-50 w-full justify-center bg-slate-200 px-4 sm:px-6 lg:px-8">
       <div
         className={`relative flex min-h-screen w-full max-w-4xl items-center justify-center overflow-hidden bg-[#6ED7F6] transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"
           }`}
