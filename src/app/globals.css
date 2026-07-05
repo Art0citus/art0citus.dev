@@ -49,6 +49,8 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+
+
 @keyframes skyline {
   from {
     transform: translateX(-40%);
@@ -143,6 +145,10 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel);
 }
 
 @layer base {
