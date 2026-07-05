@@ -1,6 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { Pixelify_Sans } from "next/font/google";
+
+const pixel = Pixelify_Sans({
+    subsets: ["latin"],
+    weight: ["700"],
+});
 import {
     BookOpen,
     Code2,
@@ -25,99 +31,97 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="ml-8 text-2xl font-bold tracking-tight text-gray-900"
+                    className={`${pixel.className} text-2xl tracking-wide text-gray-900`}
                 >
                     Art0<span className="text-sky-500">citus</span>
                 </Link>
 
                 {/* Menu */}
                 <div className="ml-auto mr-8">
-                <Sheet>
-                    <SheetTrigger asChild>
-                        <button
+                    <Sheet>
+                        <SheetTrigger
                             className="rounded-lg p-2 transition hover:bg-gray-100"
                             aria-label="Open Menu"
                         >
                             <Menu size={24} />
-                        </button>
-                    </SheetTrigger>
+                        </SheetTrigger>
 
-                    <SheetContent side="right" className="w-72">
-                        <SheetHeader>
-                            <SheetTitle className="text-left text-2xl font-bold">
-                                Art0citus
-                            </SheetTitle>
-                        </SheetHeader>
+                        <SheetContent side="right" className="w-72">
+                            <SheetHeader>
+                                <SheetTitle className="text-left text-2xl font-bold">
+                                    Art0citus
+                                </SheetTitle>
+                            </SheetHeader>
 
-                        <nav className="mt-10 flex flex-col gap-2">
-                            <a
-                                href="#about"
-                                className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                            >
-                                <User size={18} />
-                                About
-                            </a>
-
-                            <a
-                                href="#skills"
-                                className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                            >
-                                <Code2 size={18} />
-                                Skills
-                            </a>
-
-                            <a
-                                href="#projects"
-                                className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                            >
-                                <FolderGit2 size={18} />
-                                Projects
-                            </a>
-
-                            <Link
-                                href="/blog"
-                                className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                            >
-                                <BookOpen size={18} />
-                                Blog
-                            </Link>
-
-                            <a
-                                href="#contact"
-                                className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                            >
-                                <Mail size={18} />
-                                Contact
-                            </a>
-                        </nav>
-
-                        <div className="mt-10 border-t pt-6">
-                            <p className="mb-4 text-sm text-gray-500">
-                                Connect with me
-                            </p>
-
-                            <div className="flex flex-col gap-3">
+                            <nav className="mt-10 flex flex-col gap-2">
                                 <a
-                                    href="https://github.com/Art0citus"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-gray-700 transition hover:text-black"
+                                    href="#about"
+                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
                                 >
-                                    GitHub
+                                    <User size={18} />
+                                    About
                                 </a>
 
                                 <a
-                                    href="https://linkedin.com/in/ritikmxshra"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-gray-700 transition hover:text-black"
+                                    href="#skills"
+                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
                                 >
-                                    LinkedIn
+                                    <Code2 size={18} />
+                                    Skills
                                 </a>
+
+                                <a
+                                    href="#projects"
+                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
+                                >
+                                    <FolderGit2 size={18} />
+                                    Projects
+                                </a>
+
+                                <Link
+                                    href="/blog"
+                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
+                                >
+                                    <BookOpen size={18} />
+                                    Blog
+                                </Link>
+
+                                <a
+                                    href="#contact"
+                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
+                                >
+                                    <Mail size={18} />
+                                    Contact
+                                </a>
+                            </nav>
+
+                            <div className="mt-10 border-t pt-6">
+                                <p className="mb-4 text-sm text-gray-500">
+                                    Connect with me
+                                </p>
+
+                                <div className="flex flex-col gap-3">
+                                    <a
+                                        href="https://github.com/Art0citus"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-gray-700 transition hover:text-black"
+                                    >
+                                        GitHub
+                                    </a>
+
+                                    <a
+                                        href="https://linkedin.com/in/ritikmxshra"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-gray-700 transition hover:text-black"
+                                    >
+                                        LinkedIn
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </SheetContent>
-                </Sheet>
+                        </SheetContent>
+                    </Sheet>
                 </div>
             </nav>
         </header>
