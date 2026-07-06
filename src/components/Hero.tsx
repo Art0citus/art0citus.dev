@@ -49,20 +49,20 @@ export default function Hero() {
 
         {/* Hero Information */}
         <div className="mt-10 ml-56">
-            <div className="absolute left-50 top-[230px]">
+            <div className="absolute left-125 top-[230px]">
                 <h1 className="text-5xl font-bold tracking-tight text-gray-900">
             Ritik Mishra
           </h1>
           </div>
-          <div className="absolute left-120 top-[240px]">
+          <div className="absolute left-193 top-[240px]">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900">
             @Art0citus
           </h1>
           </div>
           
-          <div className="absolute left-50 top-[280px]">
+          <div className="absolute left-143 top-[280px]">
             <p className="mt-2 text-xl text-gray-500">
-            Software Engineer • Backend Engineer • AI Enthusiast
+            Software Engineer • Backend Engineer
           </p>
           </div>
           
