@@ -21,10 +21,7 @@ export default function Footer() {
                             Art0<span className="text-sky-500">citus</span>
                         </Link>
 
-                        <p className="mt-2 max-w-sm text-sm text-gray-500">
-                            Building scalable backend systems, AI-powered applications, and
-                            developer experiences.
-                        </p>
+                        
                     </div>
 
                     {/* Right */}
@@ -36,15 +33,6 @@ export default function Footer() {
                             className="rounded-full border border-gray-200 p-2 transition hover:bg-gray-100"
                         >
                             <SiGithub size={20} />
-                        </a>
-
-                        <a
-                            href="https://linkedin.com/in/ritikmxshra"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="rounded-full border border-gray-200 p-2 transition hover:bg-gray-100"
-                        >
-                            
                         </a>
 
                         <a

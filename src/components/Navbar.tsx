@@ -1,129 +1,68 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Pixelify_Sans } from "next/font/google";
+import { Menu } from "lucide-react";
+import HealthBar from "@/components/HealthBar";
 
-const pixel = Pixelify_Sans({
-    subsets: ["latin"],
-    weight: ["700"],
-});
-import {
-    BookOpen,
-    Code2,
-    FolderGit2,
-    Mail,
-    Menu,
-    User,
-} from "lucide-react";
-
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet";
 
 export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <header className="fixed top-0 left-0 z-50 flex w-full justify-center px-4">
-            <nav className="flex h-10 w-full max-w-4xl items-center justify-around gap-185 rounded-6xl border border-gray-200 bg-white/80 px-6 shadow-sm backdrop-blur-md">
-                {/* Logo */}
-                <Link
-                    href="/"
-                    className={`${pixel.className} text-2xl tracking-wide text-gray-900`}
+            <div className="relative w-full max-w-4xl">
+
+                {/* Navbar */}
+                <nav className="flex h-10 items-center justify-around gap-120  border border-gray-200 bg-white/80 px-6 shadow-sm backdrop-blur-md">
+
+                    {/* Logo */}
+                    <HealthBar />
+
+                    {/* Menu Button */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="rounded-lg p-2 transition hover:bg-gray-100"
+                        aria-label="Open Menu"
+                    >
+                        <Menu size={24} />
+                    </button>
+                </nav>
+
+                {/* Sidebar */}
+                {isOpen && (
+                    <div
+                        className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
+                        onClick={() => setIsOpen(false)}
+                    />
+                )}
+                <aside
+                    className={`absolute right-0 top-0 z-50 h-screen w-1/2 overflow-y-auto bg-white shadow-xl transition-all duration-300 ${isOpen
+                            ? "translate-x-0 opacity-100"
+                            : "translate-x-full opacity-0 pointer-events-none"
+                        }`}
                 >
-                    Art0<span className="text-sky-500">citus</span>
-                </Link>
 
-                {/* Menu */}
-                <div className="ml-auto mr-8">
-                    <Sheet>
-                        <SheetTrigger
-                            className="rounded-lg p-2 transition hover:bg-gray-100"
-                            aria-label="Open Menu"
-                        >
-                            <Menu size={24} />
-                        </SheetTrigger>
+                    <nav className="flex flex-col gap-2 p-6">
+                        <a href="#about" onClick={() => setIsOpen(false)}>
+                            About
+                        </a>
 
-                        <SheetContent side="right" className="w-72">
-                            <SheetHeader>
-                                <SheetTitle className="text-left text-2xl font-bold">
-                                    Art0citus
-                                </SheetTitle>
-                            </SheetHeader>
+                        <a href="#projects" onClick={() => setIsOpen(false)}>
+                            Projects
+                        </a>
 
-                            <nav className="mt-10 flex flex-col gap-2">
-                                <a
-                                    href="#about"
-                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                                >
-                                    <User size={18} />
-                                    About
-                                </a>
+                        <Link href="/blog" onClick={() => setIsOpen(false)}>
+                            Blog
+                        </Link>
 
-                                <a
-                                    href="#skills"
-                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                                >
-                                    <Code2 size={18} />
-                                    Skills
-                                </a>
+                        <a href="#contact" onClick={() => setIsOpen(false)}>
+                            Contact
+                        </a>
+                    </nav>
 
-                                <a
-                                    href="#projects"
-                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                                >
-                                    <FolderGit2 size={18} />
-                                    Projects
-                                </a>
-
-                                <Link
-                                    href="/blog"
-                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                                >
-                                    <BookOpen size={18} />
-                                    Blog
-                                </Link>
-
-                                <a
-                                    href="#contact"
-                                    className="flex items-center gap-3 rounded-lg px-3 py-3 transition hover:bg-gray-100"
-                                >
-                                    <Mail size={18} />
-                                    Contact
-                                </a>
-                            </nav>
-
-                            <div className="mt-10 border-t pt-6">
-                                <p className="mb-4 text-sm text-gray-500">
-                                    Connect with me
-                                </p>
-
-                                <div className="flex flex-col gap-3">
-                                    <a
-                                        href="https://github.com/Art0citus"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-gray-700 transition hover:text-black"
-                                    >
-                                        GitHub
-                                    </a>
-
-                                    <a
-                                        href="https://linkedin.com/in/ritikmxshra"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-gray-700 transition hover:text-black"
-                                    >
-                                        LinkedIn
-                                    </a>
-                                </div>
-                            </div>
-                        </SheetContent>
-                    </Sheet>
-                </div>
-            </nav>
+                </aside>
+            </div>
         </header>
     );
 }
