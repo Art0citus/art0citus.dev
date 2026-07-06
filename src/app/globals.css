@@ -147,6 +147,17 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@font-face {
+  font-family: "Pixelta";
+  src: url("/fonts/Pixelta.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-pixelta {
+  font-family: "Pixelta", sans-serif;
+}
+
 .font-pixel {
   font-family: var(--font-pixel);
 }
