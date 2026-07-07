@@ -55,7 +55,7 @@ export default function Hero() {
                         </h1>
                     </div>
                     <div className="absolute left-201 top-[250px]">
-                        <h1 className=" font-pixelta text-2xl tracking-tight text-gray-900">
+                        <h1 className=" font-pixelta text-2xl">
                             @Art0citus
                         </h1>
                     </div>
