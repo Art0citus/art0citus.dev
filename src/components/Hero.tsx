@@ -82,8 +82,109 @@ export default function Hero() {
                     </div>
 
                 </div>
+                <div className="absolute left-0 top-[800px]">
+                    <h2 className="mb-6 font-pixelta text-4xl">
+                        Work
+                    </h2>
 
+                    <a
+                        href="#projects"
+                        className="group flex items-center justify-between rounded-2xl border border-transparent p-6 transition hover:border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-900"
+                    >
+                        <div>
+                            <h3 className="text-2xl font-semibold">
+                                Featured Projects
+                            </h3>
+
+                            <p className="mt-2 max-w-xl text-gray-500">
+                                Building scalable backend systems, AI-powered
+                                applications and developer tools.
+                            </p>
+                        </div>
+
+                        <span className="text-gray-400 transition group-hover:translate-x-1">
+                            Explore →
+                        </span>
+                    </a>
+                </div>
+
+                <div className="absolute left-0 top-[1000px]">
+                    <h2 className="mb-6 font-pixelta text-4xl">
+                        Blog
+                    </h2>
+
+
+                    <div className="absolute left-0 top-[1200px]">
+                        <h3 className="text-2xl font-semibold">
+                            Learning in Public
+                        </h3>
+
+                        <p className="mt-2 max-w-xl text-gray-500">
+                            Articles on software engineering,
+                            backend development and AI.
+                        </p>
+                    </div>
+
+                    <span className="text-gray-400 transition group-hover:translate-x-1">
+                        Read →
+                    </span>
+
+                </div>
+
+                <div className="absolute left-0 top-[1500px]">
+                    <h2 className="mb-6 font-pixelta text-4xl">
+                        Personal
+                    </h2>
+
+                    <a
+                        href="#about"
+                        className="group flex items-center justify-between rounded-2xl border border-transparent p-6 transition hover:border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-900"
+                    >
+                        <div>
+                            <h3 className="text-2xl font-semibold">
+                                Beyond Code
+                            </h3>
+
+                            <p className="mt-2 max-w-xl text-gray-500">
+                                Football, books, photography,
+                                gaming and everything that shapes me.
+                            </p>
+                        </div>
+
+                        <span className="text-gray-400 transition group-hover:translate-x-1">
+                            Discover →
+                        </span>
+                    </a>
+                </div>
+
+                <div className="absolute left-0 top-[1700px]">
+                    <h2 className="mb-6 font-pixelta text-4xl">
+                        Development
+                    </h2>
+
+                    <a
+                        href="#setup"
+                        className="group flex items-center justify-between rounded-2xl border border-transparent p-6 transition hover:border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-900"
+                    >
+                        <div>
+                            <h3 className="text-2xl font-semibold">
+                                Setup & Workflow
+                            </h3>
+
+                            <p className="mt-2 max-w-xl text-gray-500">
+                                My editor, terminal, keyboard,
+                                favorite tools and workflow.
+                            </p>
+                        </div>
+
+                        <span className="text-gray-400 transition group-hover:translate-x-1">
+                            View →
+                        </span>
+                    </a>
+                </div>
             </div>
+
         </section>
+
     );
 }
