@@ -147,6 +147,15 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
 @font-face {
   font-family: "Pixelta";
   src: url("/fonts/Pixelta.ttf") format("truetype");
@@ -161,6 +170,7 @@ body {
 .font-pixel {
   font-family: var(--font-pixel);
 }
+
 
 @layer base {
   * {

@@ -49,24 +49,24 @@ export default function Hero() {
 
                 {/* Hero Information */}
                 <div className="mt-10 ml-56">
-                    <div className="absolute left-125 top-[235px]">
+                    <div className="absolute left-0 top-[320px]">
                         <h1 className="font-pixelta text-6xl">
                             Ritik Mishra
                         </h1>
                     </div>
-                    <div className="absolute left-193 top-[250px]">
+                    <div className="absolute left-201 top-[250px]">
                         <h1 className=" font-pixelta text-2xl tracking-tight text-gray-900">
                             @Art0citus
                         </h1>
                     </div>
 
-                    <div className="absolute left-143 top-[280px]">
-                        <p className=" font-pixelta mt-2 text-xl text-gray-500">
-                            Software Engineer • Backend Engineer
+                    <div className="absolute left-1 top-[380px]">
+                        <p className=" font-pixelta mt-2 text-2xl text-gray-500">
+                            Full Stack Developer | Web & Mobile Apps
                         </p>
                     </div>
 
-                    <div className="absolute left-10 top-[340px]">
+                    <div className="absolute left-0 top-[430px]">
                         <p className="font-pixelta mt-6 max-w-2xl text-lg leading-8 text-gray-600">
                             I build scalable backend systems, AI-powered applications, and
                             developer tools. Passionate about distributed systems, cloud
@@ -74,7 +74,7 @@ export default function Hero() {
                             problems.
                         </p>
                     </div>
-                    <div className="absolute left-10 top-[450px]">
+                    <div className="absolute left-0 top-[600px]">
                         <div className="mt-6 flex flex-wrap items-center gap-6 text-gray-500">
                             <span>📍 Delhi, India</span>
                             <span>💼 Open to Work</span>
