@@ -47,15 +47,13 @@ export default function Navbar() {
           justify-around
           gap-120
           
-          border
-          border-neutral-200
-          bg-white/80
+          
+          bg-white
           px-5
-          shadow-sm
-          backdrop-blur-xl
+          
+          
           transition-colors
-          dark:border-neutral-800
-          dark:bg-neutral-900/80
+          dark:bg-background
         "
       >
         {/* Left */}
