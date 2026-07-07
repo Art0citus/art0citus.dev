@@ -16,9 +16,9 @@ export default function Footer() {
                     <div>
                         <Link
                             href="/"
-                            className="text-2xl font-bold tracking-tight text-gray-900"
+                            className="text-2xl font-bold "
                         >
-                            Art0<span className="text-sky-500">citus</span>
+                            Art0<span className="text-red-500">citus</span>
                         </Link>
 
                         
