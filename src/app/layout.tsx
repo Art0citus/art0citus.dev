@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 import ThemeProvider from "@/components/ThemeProvider";
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +43,10 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <Script
+          src="/oneko.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
