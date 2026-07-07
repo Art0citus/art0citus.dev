@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section className="flex min-h-screen w-full justify-center bg-white px-4 sm:px-6 lg:px-8">
+        <section className="flex min-h-screen w-full justify-center bg-background text-foreground transition-colors duration-300 px-4 sm:px-6 lg:px-8">
             <div className="relative flex w-full max-w-4xl flex-col">
 
                 {/* Banner */}
