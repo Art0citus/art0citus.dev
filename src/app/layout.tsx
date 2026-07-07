@@ -24,7 +24,7 @@ const pixel = Pixelify_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Art0citus",
+  title: "Art0citus.dev",
   description: "Portfolio of Ritik Mishra",
 };
 
