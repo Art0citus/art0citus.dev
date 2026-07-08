@@ -62,7 +62,7 @@ export default function Hero() {
 
                     <div className="absolute left-1 top-[380px]">
                         <p className=" font-pixelta mt-2 text-2xl text-gray-500">
-                            Full Stack Developer | Web & Mobile Apps
+                        Building Scalable Backend Systems
                         </p>
                     </div>
 
