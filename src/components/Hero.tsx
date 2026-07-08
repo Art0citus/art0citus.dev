@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Hero() {
     return (
         <section
-  className="
+            className="
     flex
     w-full
     justify-center
@@ -19,8 +19,8 @@ export default function Hero() {
     sm:px-6
     lg:px-8
   "
->
-  <div className="relative h-[850px] w-full max-w-4xl">
+        >
+            <div className="relative h-[850px] w-full max-w-4xl">
 
                 {/* Banner */}
                 <div className="relative mt-24 h-[420px] overflow-hidden rounded-3xl">
