@@ -9,7 +9,7 @@ import {
 
 export default function Footer() {
     return (
-        <footer className="absolute left-0 top-[2500px] flex w-full justify-center py-12">
+        <footer className="flex w-full justify-center py-0">
             <div className="mx-auto w-full max-w-4xl border-t border-gray-200 px-4 sm:px-6 lg:px-8 pt-8">
                 <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
                     {/* Left */}
