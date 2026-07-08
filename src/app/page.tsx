@@ -16,9 +16,11 @@ export default function Home() {
   ) : (
     <>
       <Navbar />
-      <Hero />
-      <Projects />
-      <Footer />
+      <main className="flex-1">
+        <Hero />
+        <Projects />
+        <Footer />
+      </main>
     </>
   );
 }
