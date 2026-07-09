@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 
+
 export default function Hero() {
     return (
         <section
@@ -69,24 +70,82 @@ export default function Hero() {
                             Ritik Mishra
                         </h1>
                     </div>
-                    <div className="absolute left-201 top-[250px]">
-                        <h1 className=" font-pixelta text-2xl">
-                            @Art0citus
+                    <div className="absolute left-160 top-[230px] flex items-center gap-3 text-foreground">
+                         <h1 className="font-pixelta text-2xl">
+                            Get in Touch
                         </h1>
                     </div>
+                    <div className="absolute left-190 top-[230px] flex items-center gap-3 text-foreground">
+                        <a
+                            href="https://github.com/Art0citus"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-xl  bg-card p-2 transition-all duration-200 hover:-translate-y-1 hover:bg-accent"
+                        >
+                            <Image
+                                src="/icons/github.svg"
+                                alt="GitHub"
+                                width={100}
+                                height={100}
+                                className="dark:invert"
+                            />
+                        </a>
 
-                    <div className="absolute left-1 top-[380px]">
-                        <p className=" font-pixelta mt-2 text-2xl text-gray-500">
+                        <a
+                            href="https://linkedin.com/in/ritikmxshra"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-xl  bg-card p-2 transition-all duration-200 hover:-translate-y-1 hover:bg-accent"
+                        >
+                            <Image
+                                src="/icons/linkedin.svg"
+                                alt="LinkedIn"
+                                width={100}
+                                height={100}
+                                className="dark:invert"
+                            />
+                        </a>
+
+                        <a
+                            href="https://x.com/Art0citus"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-xl bg-card p-2 transition-all duration-200 hover:-translate-y-1 hover:bg-accent"
+                        >
+                            <Image
+                                src="/icons/x.svg"
+                                alt="X"
+                                width={100}
+                                height={100}
+                                className="dark:invert"
+                            />
+                        </a>
+
+                        <a
+                            href="mailto:mritik424@gmail.com"
+                            className="rounded-xl  bg-card p-2 transition-all duration-200 hover:-translate-y-1 hover:bg-accent"
+                        >
+                            <Image
+                                src="/icons/envelope.svg"
+                                alt="Email"
+                                width={100}
+                                height={100}
+                                className="dark:invert"
+                            />
+                        </a>
+                    </div>
+
+
+                    <div className="absolute left-0 top-[395px]">
+                        <p className=" font-pixelta mt-2 text-2xl">
                             Building Scalable Backend Systems
                         </p>
                     </div>
 
                     <div className="absolute left-0 top-[430px]">
-                        <p className="font-pixelta mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                            I build scalable backend systems, AI-powered applications, and
-                            developer tools. Passionate about distributed systems, cloud
-                            computing, AI, and building products that solve real-world
-                            problems.
+                        <p className="font-pixelta mt-6 max-w-2xl text-lg leading-8">
+                        Building web and mobile applications, especially scalable backend systems.
+                        Creating scalable software with a strong focus on backend engineering and solving real-world problems
                         </p>
                     </div>
                     <div className="absolute left-0 top-[600px]">
