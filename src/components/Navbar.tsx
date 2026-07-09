@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Moon, Sun, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
-
+import Switch from "@/components/Switch"; // Adjust path as needed
 
 export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
-
   const [showNavbar, setShowNavbar] = useState(true);
 
   useEffect(() => {
@@ -31,11 +30,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle theme toggle through Switch component
+  const handleThemeToggle = (isChecked) => {
+    setTheme(isChecked ? "dark" : "light");
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 z-50 flex w-full justify-around gap-120 px-4 transition-transform duration-300 ${
-        showNavbar ? "translate-y-0" : "-translate-y-20"
-      }`}
+      className={`fixed top-0 left-0 z-50 flex w-full justify-around gap-120 px-4 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-20"
+        }`}
     >
       <nav
         className="
@@ -46,20 +49,14 @@ export default function Navbar() {
           items-center
           justify-around
           gap-120
-          
-          
           bg-white
           px-5
-          
-          
           transition-colors
           dark:bg-background
         "
       >
         {/* Left */}
         <div className="flex items-center gap-8">
-          
-
           <div className="hidden items-center gap-6 md:flex">
             <Link
               href="/"
@@ -83,10 +80,10 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/resume"
+              href="/Contact"
               className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
             >
-              Resume
+              Contact
             </Link>
           </div>
         </div>
@@ -97,8 +94,9 @@ export default function Navbar() {
           <button
             className="
               hidden
+              min-w-[100px]
               items-center
-              gap-2
+              gap-1
               rounded-full
               border
               border-neutral-200
@@ -114,40 +112,25 @@ export default function Navbar() {
             "
           >
             <Search size={14} />
-
-            <span>Ctrl</span>
-
-            <kbd className="rounded border border-neutral-300 px-1 text-[10px] dark:border-neutral-600">
-              K 
+            <span>Ctrl+</span>
+            <kbd className="rounded  px-1 text-sm dark:border-neutral-600">
+              K
             </kbd>
           </button>
 
-          {/* Theme Toggle */}
-          <button
+          {/* Theme Toggle - Custom Switch */}
+          <div
             onClick={() =>
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }
-            className="
-              flex
-              h-9
-              w-9
-              items-center
-              justify-center
-              rounded-full
-              transition-all
-              duration-200
-              hover:bg-neutral-100
-              hover:rotate-12
-              dark:hover:bg-neutral-800
-            "
+            className="cursor-pointer"
             aria-label="Toggle Theme"
           >
-            {resolvedTheme === "dark" ? (
-              <Sun size={18} />
-            ) : (
-              <Moon size={18} />
-            )}
-          </button>
+            <Switch
+              isChecked={resolvedTheme === "dark"}
+              onChange={handleThemeToggle}
+            />
+          </div>
         </div>
       </nav>
     </header>
