@@ -1,11 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail } from "lucide-react";
-import {
-    SiGithub,
-    SiX,
-} from "react-icons/si";
+import Image from "next/image";
 
 export default function Footer() {
     return (
@@ -21,7 +17,7 @@ export default function Footer() {
                             Art0<span className="text-red-500">citus</span>
                         </Link>
 
-                        
+
                     </div>
 
                     {/* Right */}
@@ -30,25 +26,62 @@ export default function Footer() {
                             href="https://github.com/Art0citus"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="rounded-full border border-gray-200 p-2 transition hover:bg-gray-100"
+                            aria-label="GitHub"
+                            className="group rounded-2xl  bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
                         >
-                            <SiGithub size={20} />
+                            <Image
+                                src="/icons/github.svg"
+                                alt="GitHub"
+                                width={22}
+                                height={22}
+                                className="transition duration-300 dark:invert"
+                            />
+                        </a>
+
+                        <a
+                            href="https://linkedin.com/in/ritikmxshra"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                            className="group rounded-2xl bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
+                        >
+                            <Image
+                                src="/icons/linkedin.svg"
+                                alt="LinkedIn"
+                                width={22}
+                                height={22}
+                                className="transition duration-300 dark:invert"
+                            />
                         </a>
 
                         <a
                             href="https://x.com/Art0citus"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="rounded-full border border-gray-200 p-2 transition hover:bg-gray-100"
+                            aria-label="X"
+                            className="group rounded-2xl bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
                         >
-                            <SiX size={20} />
+                            <Image
+                                src="/icons/x.svg"
+                                alt="X"
+                                width={22}
+                                height={22}
+                                className="transition duration-300 dark:invert"
+                            />
                         </a>
 
                         <a
                             href="mailto:mritik424@gmail.com"
-                            className="rounded-full border border-gray-200 p-2 transition hover:bg-gray-100"
+                            aria-label="Email"
+                            className="group rounded-2xl  bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
                         >
-                            <Mail size={20} />
+                            <Image
+                                src="/icons/envelope.svg"
+                                alt="Email"
+                                width={22}
+                                height={22}
+                                className="transition duration-300 dark:invert"
+                            />
                         </a>
                     </div>
                 </div>
