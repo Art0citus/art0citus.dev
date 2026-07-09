@@ -156,6 +156,11 @@ html {
   animation: skyline 12s linear infinite;
 }
 
+.project-card {
+  position: sticky;
+  top: 6rem;
+  transform-origin: top center;
+}
 /* ---------- BASE ---------- */
 
 @layer base {
