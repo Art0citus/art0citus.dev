@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Inter } from "next/font/google";
 
 
 export default function Hero() {
@@ -66,12 +67,12 @@ export default function Hero() {
                 {/* Hero Information */}
                 <div className="mt-10 ml-56">
                     <div className="absolute left-0 top-[320px]">
-                        <h1 className="font-pixelta text-6xl">
+                        <h1 className="font-Inter text-6xl">
                             Ritik Mishra
                         </h1>
                     </div>
-                    <div className="absolute left-160 top-[230px] flex items-center gap-3 text-foreground">
-                         <h1 className="font-pixelta text-2xl">
+                    <div className="absolute left-155 top-[230px] flex items-center gap-3 text-foreground">
+                         <h1 className=" text-2xl">
                             Get in Touch
                         </h1>
                     </div>
@@ -137,13 +138,13 @@ export default function Hero() {
 
 
                     <div className="absolute left-0 top-[395px]">
-                        <p className=" font-pixelta mt-2 text-2xl">
+                        <p className=" mt-2 text-2xl">
                             Building Scalable Backend Systems
                         </p>
                     </div>
 
                     <div className="absolute left-0 top-[430px]">
-                        <p className="font-pixelta mt-6 max-w-2xl text-lg leading-8">
+                        <p className=" mt-6 max-w-2xl text-lg leading-8">
                         Building web and mobile applications, especially scalable backend systems.
                         Creating scalable software with a strong focus on backend engineering and solving real-world problems
                         </p>
