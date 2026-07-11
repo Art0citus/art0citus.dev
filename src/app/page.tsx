@@ -21,12 +21,11 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex flex-1 flex-col gap-24">
         <Hero />
         <ProjectStack />
         <TechStack />
         <FunFacts />
-        
       </main>
 
       <Footer />
