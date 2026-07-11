@@ -3,7 +3,7 @@ export const projects = [
     title: "Expenny",
     description:
       "Expense tracking and subscription management platform.",
-    image: "/images/projects/expenny.png",
+    image: "/images/expenny.png",
     technologies: ["Flutter", "Node.js", "MongoDB"],
     github: "#",
     demo: "#",
@@ -12,7 +12,7 @@ export const projects = [
     title: "Tirtle",
     description:
       "Real-time messaging platform with Socket.IO.",
-    image: "/images/projects/tirtle.png",
+    image: "/images/tirtle.png",
     technologies: ["Node.js", "Socket.IO", "Redis"],
     github: "#",
     demo: "#",
@@ -21,7 +21,7 @@ export const projects = [
     title: "ArtoBot",
     description:
       "AI-powered assistant using FastAPI and Gemini.",
-    image: "/images/projects/artobot.png",
+    image: "/images/artobot.png",
     technologies: ["Flutter", "FastAPI", "Gemini"],
     github: "#",
     demo: "#",

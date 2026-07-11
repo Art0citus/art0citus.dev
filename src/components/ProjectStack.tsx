@@ -71,7 +71,7 @@ export default function ProjectStack() {
     >
       <div className="w-full max-w-2xl">
         <div className="mb-16">
-          <h2 className="font-pixelta text-5xl">Featured Projects</h2>
+          <h2 className="font-sans text-5xl">Featured Projects</h2>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Some of my favourite projects exploring backend
             engineering, cloud computing and AI.

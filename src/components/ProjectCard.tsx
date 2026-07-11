@@ -30,7 +30,7 @@ export default function ProjectCard({ project, index, cardRef }: Props) {
                 zIndex: index + 1,
             }}
         >
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
+            <div className="overflow-hidden rounded-3xl  bg-card shadow-2xl">
                 <div className="flex flex-col md:flex-row">
                     <div className="relative h-72 w-full md:h-[200px] md:w-1/2">
                         <Image
