@@ -3,93 +3,56 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const socials = [
+    { href: "https://github.com/Art0citus", label: "GitHub", icon: "/icons/github.svg" },
+    { href: "https://linkedin.com/in/ritikmxshra", label: "LinkedIn", icon: "/icons/linkedin.svg" },
+    { href: "https://x.com/Art0citus", label: "X", icon: "/icons/x.svg" },
+    { href: "mailto:mritik424@gmail.com", label: "Email", icon: "/icons/envelope.svg" },
+];
+
 export default function Footer() {
     return (
-        <footer className="flex w-full justify-center py-0">
-            <div className="mx-auto w-full max-w-4xl border-t border-gray-200 px-4 sm:px-6 lg:px-8 pt-8">
-                <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-                    {/* Left */}
-                    <div>
-                        <Link
-                            href="/"
-                            className="text-2xl font-bold "
-                        >
-                            Art0<span className="text-red-500">citus</span>
-                        </Link>
+        <footer className="flex w-full justify-center">
+            <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+                {/* Top divider — thin, quiet */}
+                <div className="h-px w-full bg-neutral-200 dark:bg-neutral-800" />
 
+                <div className="flex flex-col items-center gap-6 pt-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                    {/* Wordmark */}
+                    <Link
+                        href="/"
+                        className="text-lg font-semibold tracking-tight text-neutral-900 transition-colors hover:text-neutral-600 dark:text-neutral-100 dark:hover:text-neutral-400"
+                    >
+                        Art0<span className="text-red-500">citus</span>
+                    </Link>
 
-                    </div>
-
-                    {/* Right */}
-                    <div className="flex items-center gap-4">
-                        <a
-                            href="https://github.com/Art0citus"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="GitHub"
-                            className="group rounded-2xl  bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
-                        >
-                            <Image
-                                src="/icons/github.svg"
-                                alt="GitHub"
-                                width={22}
-                                height={22}
-                                className="transition duration-300 dark:invert"
-                            />
-                        </a>
-
-                        <a
-                            href="https://linkedin.com/in/ritikmxshra"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="LinkedIn"
-                            className="group rounded-2xl bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
-                        >
-                            <Image
-                                src="/icons/linkedin.svg"
-                                alt="LinkedIn"
-                                width={22}
-                                height={22}
-                                className="transition duration-300 dark:invert"
-                            />
-                        </a>
-
-                        <a
-                            href="https://x.com/Art0citus"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="X"
-                            className="group rounded-2xl bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
-                        >
-                            <Image
-                                src="/icons/x.svg"
-                                alt="X"
-                                width={22}
-                                height={22}
-                                className="transition duration-300 dark:invert"
-                            />
-                        </a>
-
-                        <a
-                            href="mailto:mritik424@gmail.com"
-                            aria-label="Email"
-                            className="group rounded-2xl  bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
-                        >
-                            <Image
-                                src="/icons/envelope.svg"
-                                alt="Email"
-                                width={22}
-                                height={22}
-                                className="transition duration-300 dark:invert"
-                            />
-                        </a>
+                    {/* Socials — flat icons, no cards/shadows */}
+                    <div className="flex items-center gap-5">
+                        {socials.map(({ href, label, icon }) => (
+                            <a
+                                key={label}
+                                href={href}
+                                target={href.startsWith("http") ? "_blank" : undefined}
+                                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                                aria-label={label}
+                                className="opacity-50 transition-opacity duration-200 hover:opacity-100"
+                            >
+                                <Image
+                                    src={icon}
+                                    alt=""
+                                    width={17}
+                                    height={17}
+                                    className="dark:invert"
+                                />
+                            </a>
+                        ))}
                     </div>
                 </div>
 
-                <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-gray-200 pt-6 text-sm text-gray-500 md:flex-row">
-                    <p>© {new Date().getFullYear()} Ritik Mishra. All rights reserved.</p>
-
-                    <p>Built with Next.js • Tailwind CSS • TypeScript</p>
+                {/* Bottom line */}
+                <div className="mt-10 flex flex-col items-center justify-between gap-2 text-xs text-neutral-400 dark:text-neutral-600 md:flex-row">
+                    <p>&copy; {new Date().getFullYear()} Ritik Mishra</p>
+                    <p className="tracking-wide">Next.js &middot; Tailwind &middot; TypeScript</p>
                 </div>
             </div>
         </footer>
