@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Inter } from "next/font/google";
-
 
 export default function Hero() {
     return (
@@ -67,7 +65,7 @@ export default function Hero() {
                 {/* Hero Information */}
                 <div className="mt-10 ml-56">
                     <div className="absolute left-0 top-[320px]">
-                        <h1 className="font-Inter text-6xl">
+                        <h1 className="font-sans text-6xl font-semibold tracking-tight">
                             Ritik Mishra
                         </h1>
                     </div>
