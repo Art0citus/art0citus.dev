@@ -4,15 +4,15 @@ import Stack from "@/components/ui/Stack";
 import FunFactCard from "@/components/FunFactCard";
 
 const books = [
-  { image: "/images/books/book1.jpg", title: "Book Title One", subtitle: "Author Name" },
-  { image: "/images/books/book2.jpg", title: "Book Title Two", subtitle: "Author Name" },
-  { image: "/images/books/book3.jpg", title: "Book Title Three", subtitle: "Author Name" },
+  { image: "/images/book1.png", title: "", subtitle: "" },
+  { image: "/images/book2.jpg", title: "", subtitle: "" },
+  { image: "/images/book3.jpg", title: "", subtitle: "" },
 ];
 
 const movies = [
-  { image: "/images/movies/movie1.jpg", title: "Movie Title One", subtitle: "Director Name" },
-  { image: "/images/movies/movie2.jpg", title: "Movie Title Two", subtitle: "Director Name" },
-  { image: "/images/movies/movie3.jpg", title: "Movie Title Three", subtitle: "Director Name" },
+  { image: "/images/movie1.jpg", title: "", subtitle: "" },
+  { image: "/images/movie2.jpg", title: "", subtitle: "" },
+  { image: "/images/movie3.png", title: "", subtitle: "" },
 ];
 
 export default function FunFacts() {
