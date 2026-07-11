@@ -100,7 +100,7 @@ html {
   --background: #0b1120;
   --foreground: #f8fafc;
 
-  --card: #161b22;
+  --card: #0b1120;
   --card-foreground: #f8fafc;
 
   --popover: #161b22;
@@ -125,6 +125,19 @@ html {
   --ring: #38bdf8;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
 /* ---------- FONTS ---------- */
 
 @font-face {
