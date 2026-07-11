@@ -7,18 +7,17 @@ const rowOne = [
     "python",
     "java",
     "typescript",
-    "javascript",
     "react",
     "nextjs",
     "flutter",
     "dart",
-    "tailwindcss",
+    
 ];
 
 const rowTwo = [
+    
+    "tailwindcss",
     "nodejs",
-    "express",
-    "fastapi",
     "postgresql",
     "mongodb",
     "redis",
@@ -50,9 +49,9 @@ function MarqueeRow({
                 {loop.map((skill, i) => (
                     <div
                         key={`${skill}-${i}`}
-                        className="flex items-center gap-2.5 rounded-full bg-card px-5 py-3 transition-colors duration-300 hover:bg-accent"
+                        className="flex items-center gap-2.5 rounded-full bg-card px-5 py-3 transition-colors duration-300 "
                     >
-                        <div className="h-7 w-7 shrink-0 grayscale transition-all duration-300 hover:grayscale-0">
+                        <div className="h-10 w-10 shrink-0 grayscale transition-all duration-300 hover:grayscale-0">
                             <StackIcon name={skill} className="h-full w-full" />
                         </div>
                         <span className="whitespace-nowrap text-sm font-medium capitalize text-muted-foreground">
@@ -76,8 +75,8 @@ export default function TechStack() {
                     Tech Stack
                 </h2>
 
-                <p className="mt-4 text-lg text-muted-foreground">
-                    Technologies I use to build scalable applications.
+                <p className="mt-7 text-lg text-muted-foreground  ">
+                    Technologies have used in building.
                 </p>
 
                 <div
