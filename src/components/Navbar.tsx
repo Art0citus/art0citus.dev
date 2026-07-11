@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -9,6 +9,7 @@ import Switch from "@/components/Switch"; // Adjust path as needed
 export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const [showNavbar, setShowNavbar] = useState(true);
+  const toggleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -30,9 +31,45 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle theme toggle through Switch component
-  const handleThemeToggle = (isChecked) => {
-    setTheme(isChecked ? "dark" : "light");
+  // Single source of truth for toggling the theme.
+  // Triggers the circle-reveal View Transition from the toggle's position.
+  const toggleTheme = () => {
+    const newTheme = resolvedTheme === "dark" ? "light" : "dark";
+    const el = toggleRef.current;
+
+    // Fallback for browsers without View Transitions support (e.g. Firefox)
+    if (!el || !document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+
+    const { top, left, width, height } = el.getBoundingClientRect();
+    const x = left + width / 2;
+    const y = top + height / 2;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 600,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
   };
 
   return (
@@ -120,15 +157,14 @@ export default function Navbar() {
 
           {/* Theme Toggle - Custom Switch */}
           <div
-            onClick={() =>
-              setTheme(resolvedTheme === "dark" ? "light" : "dark")
-            }
+            ref={toggleRef}
+            onClick={toggleTheme}
             className="cursor-pointer"
             aria-label="Toggle Theme"
           >
             <Switch
               isChecked={resolvedTheme === "dark"}
-              onChange={handleThemeToggle}
+              onChange={() => {}}
             />
           </div>
         </div>
