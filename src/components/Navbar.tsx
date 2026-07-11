@@ -37,7 +37,6 @@ export default function Navbar() {
     const newTheme = resolvedTheme === "dark" ? "light" : "dark";
     const el = toggleRef.current;
 
-    // Fallback for browsers without View Transitions support (e.g. Firefox)
     if (!el || !document.startViewTransition) {
       setTheme(newTheme);
       return;
@@ -74,24 +73,9 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 flex w-full justify-around gap-120 px-4 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-20"
-        }`}
+      className={`fixed top-0 left-0 z-50 flex w-full justify-around gap-120 px-4 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-20"}`}
     >
-      <nav
-        className="
-          flex
-          h-11
-          w-full
-          max-w-4xl
-          items-center
-          justify-around
-          gap-120
-          bg-white
-          px-5
-          transition-colors
-          dark:bg-background
-        "
-      >
+      <nav className="flex h-11 w-full max-w-4xl items-center justify-around gap-120 bg-white px-5 transition-colors dark:bg-background">
         {/* Left */}
         <div className="flex items-center gap-8">
           <div className="hidden items-center gap-6 md:flex">
@@ -117,7 +101,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/Contact"
+              href="/contact"
               className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
             >
               Contact
@@ -128,29 +112,10 @@ export default function Navbar() {
         {/* Right */}
         <div className="flex items-center gap-15">
           {/* Search */}
-          <button
-            className="
-              hidden
-              min-w-[100px]
-              items-center
-              gap-1
-              rounded-full
-              border
-              border-neutral-200
-              px-3
-              py-1.5
-              text-sm
-              text-neutral-500
-              transition
-              hover:bg-neutral-100
-              dark:border-neutral-700
-              dark:hover:bg-neutral-800
-              md:flex
-            "
-          >
+          <button className="hidden min-w-[100px] items-center gap-1 rounded-full border border-neutral-200 px-3 py-1.5 text-sm text-neutral-500 transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 md:flex">
             <Search size={14} />
             <span>Ctrl+</span>
-            <kbd className="rounded  px-1 text-sm dark:border-neutral-600">
+            <kbd className="rounded px-1 text-sm dark:border-neutral-600">
               K
             </kbd>
           </button>
