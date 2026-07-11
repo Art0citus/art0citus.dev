@@ -1,20 +1,27 @@
-import type { FunFact } from "@/data/funFacts";
+import Image from "next/image";
 
-export default function FunFactCard({ icon: Icon, label, detail, color }: FunFact) {
+interface FunFactCardProps {
+  image: string;
+  title: string;
+  subtitle?: string;
+}
+
+export default function FunFactCard({ image, title, subtitle }: FunFactCardProps) {
   return (
-    <div className="relative flex h-full w-full flex-col justify-between overflow-hidden border border-border bg-card p-6 shadow-2xl">
-      <div className="absolute inset-x-0 top-0 h-1.5" style={{ backgroundColor: color }} />
+    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
+      <Image
+        src={image}
+        alt={title}
+        fill
+        className="object-cover"
+        sizes="256px"
+      />
 
-      <div
-        className="flex h-12 w-12 items-center justify-center rounded-2xl"
-        style={{ backgroundColor: `${color}26` }}
-      >
-        <Icon size={22} style={{ color }} />
-      </div>
-
-      <div>
-        <h3 className="text-xl font-bold">{label}</h3>
-        <p className="mt-2 text-sm text-muted-foreground">{detail}</p>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-10">
+        <h3 className="text-sm font-bold text-white">{title}</h3>
+        {subtitle && (
+          <p className="mt-0.5 text-xs text-white/70">{subtitle}</p>
+        )}
       </div>
     </div>
   );
