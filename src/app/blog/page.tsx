@@ -1,11 +1,19 @@
+import Navbar from "@/components/Navbar";
 import BlogHero from "@/components/BlogHero";
+import BlogPreview from "@/components/BlogPreview";
+import Footer from "@/components/Footer";
 
 export default function BlogPage() {
   return (
-    <>
-      <BlogHero />
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <Navbar />
 
-      {/* Blog posts */}
-    </>
+      <main className="flex-1">
+        <BlogHero />
+        <BlogPreview />
+      </main>
+
+      <Footer />
+    </div>
   );
 }
