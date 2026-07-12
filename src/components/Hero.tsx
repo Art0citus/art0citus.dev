@@ -16,12 +16,12 @@ export default function Hero() {
     duration-300
     px-4
     pt-24
-    pb-32
+    pb-16
     sm:px-6
     lg:px-8
   "
         >
-            <div className="relative h-[850px] w-full max-w-4xl">
+            <div className="relative h-[680px] w-full max-w-4xl">
 
                 {/* Banner */}
                 <div className="relative mt-24 h-[420px] overflow-hidden rounded-3xl">
@@ -70,7 +70,7 @@ export default function Hero() {
                             Ritik Mishra
                         </h1>
                     </div>
-                    <div className="absolute left-155 top-[229px] flex items-center gap-3 text-foreground">
+                    <div className="absolute left-155 top-[230px] flex items-center gap-3 text-foreground">
                         <h1 className=" text-2xl">
                             Get in Touch
                         </h1>
@@ -149,26 +149,39 @@ export default function Hero() {
                         </p>
                     </div>
                     <div className="absolute left-0 top-[600px]">
+
                         <div className="mt-6 flex flex-wrap items-center gap-3">
-                            <span className="flex items-center gap-2 rounded-full  bg-card px-4 py-2 text-sm text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700">
-                                <MapPin size={14} />
-                                Delhi, India
-                            </span>
 
                             <span className="flex items-center gap-2 rounded-full  bg-card px-4 py-2 text-sm text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-                                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-                                </span>
-                                Open to work
+
+                                <MapPin size={14} />
+
+                                Delhi, India
+
                             </span>
+
+
+
+                            <span className="flex items-center gap-2 rounded-full  bg-card px-4 py-2 text-sm text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700">
+
+                                <span className="relative flex h-2 w-2">
+
+                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+
+                                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+
+                                </span>
+
+                                Open to work
+
+                            </span>
+
                         </div>
+
                     </div>
 
                 </div>
-
             </div>
-
         </section>
 
     );
