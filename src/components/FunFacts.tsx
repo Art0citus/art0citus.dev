@@ -4,15 +4,15 @@ import Stack from "@/components/ui/Stack";
 import FunFactCard from "@/components/FunFactCard";
 
 const books = [
-  { image: "/images/book1.png", title: "", subtitle: "" },
-  { image: "/images/book2.jpg", title: "", subtitle: "" },
-  { image: "/images/book3.jpg", title: "", subtitle: "" },
+  { image: "/images/book1.png", title: "  ", subtitle: "  " },
+  { image: "/images/book2.jpg", title: "  ", subtitle: "  " },
+  { image: "/images/book3.jpg", title: "  ", subtitle: "  " },
 ];
 
 const movies = [
-  { image: "/images/movie1.jpg", title: "", subtitle: "" },
-  { image: "/images/movie2.jpg", title: "", subtitle: "" },
-  { image: "/images/movie3.png", title: "", subtitle: "" },
+  { image: "/images/movie1.jpg", title: " ", subtitle: "  " },
+  { image: "/images/movie2.jpg", title: " ", subtitle: "  " },
+  { image: "/images/movie3.png", title: " ", subtitle: "  " },
 ];
 
 export default function FunFacts() {
@@ -24,15 +24,15 @@ export default function FunFacts() {
       id="personal"
       className="flex justify-center bg-background px-4 pt-32 pb-48"
     >
-      <div className="flex max-w-3xl flex-col gap-12 ">
-        <div className="w-full max-w-4xl">
+      <div className="flex w-full max-w-4xl flex-col items-start gap-12">
+        <div className="w-full max-w-sm">
           <h2 className="font-sans text-5xl">Personal</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             A few things I love outside of code. Drag through the stacks.
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-16 sm:flex-row sm:items-start sm:justify-center sm:gap-24">
+       <div className="flex w-full flex-col items-center gap-16 sm:flex-row sm:items-start sm:justify-center sm:gap-24">
           {/* Books */}
           <div className="flex flex-col items-center gap-5">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -49,7 +49,7 @@ export default function FunFacts() {
               />
             </div>
           </div>
-
+ 
           {/* Movies */}
           <div className="flex flex-col items-center gap-5">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
