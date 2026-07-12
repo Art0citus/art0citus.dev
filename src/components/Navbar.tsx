@@ -4,11 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
-import Switch from "@/components/Switch"; // Adjust path as needed
+
+import Switch from "@/components/Switch";
+import SearchModal from "@/components/SearchModal";
 
 export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
+
   const [showNavbar, setShowNavbar] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
+
   const toggleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,8 +36,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Single source of truth for toggling the theme.
-  // Triggers the circle-reveal View Transition from the toggle's position.
   const toggleTheme = () => {
     const newTheme = resolvedTheme === "dark" ? "light" : "dark";
     const el = toggleRef.current;
@@ -43,8 +46,10 @@ export default function Navbar() {
     }
 
     const { top, left, width, height } = el.getBoundingClientRect();
+
     const x = left + width / 2;
     const y = top + height / 2;
+
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
       Math.max(y, window.innerHeight - y)
@@ -72,12 +77,14 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 z-50 flex w-full justify-around gap-120 px-4 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-20"}`}
-    >
-      <nav className="flex h-11 w-full max-w-4xl items-center justify-around gap-120 bg-white px-5 transition-colors dark:bg-background">
-        {/* Left */}
-        <div className="flex items-center gap-8">
+    <>
+      <header
+        className={`fixed top-0 left-0 z-50 flex w-full justify-center px-4 transition-transform duration-300 ${
+          showNavbar ? "translate-y-0" : "-translate-y-20"
+        }`}
+      >
+        <nav className="flex h-11 w-full max-w-4xl items-center justify-between bg-white px-5 transition-colors dark:bg-background">
+          {/* Left */}
           <div className="hidden items-center gap-6 md:flex">
             <Link
               href="/"
@@ -107,33 +114,40 @@ export default function Navbar() {
               Contact
             </Link>
           </div>
-        </div>
 
-        {/* Right */}
-        <div className="flex items-center gap-15">
-          {/* Search */}
-          <button className="hidden min-w-[100px] items-center gap-1 rounded-full border border-neutral-200 px-3 py-1.5 text-sm text-neutral-500 transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 md:flex">
-            <Search size={14} />
-            <span>Ctrl+</span>
-            <kbd className="rounded px-1 text-sm dark:border-neutral-600">
-              K
-            </kbd>
-          </button>
+          {/* Right */}
+          <div className="flex items-center gap-5">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="hidden min-w-[110px] items-center gap-2 rounded-full border border-neutral-200 px-4 py-1.5 text-sm text-neutral-500 transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 md:flex"
+            >
+              <Search size={14} />
 
-          {/* Theme Toggle - Custom Switch */}
-          <div
-            ref={toggleRef}
-            onClick={toggleTheme}
-            className="cursor-pointer"
-            aria-label="Toggle Theme"
-          >
-            <Switch
-              isChecked={resolvedTheme === "dark"}
-              onChange={() => {}}
-            />
+              <span>Ctrl</span>
+
+              <kbd className="rounded border border-neutral-300 px-1 text-[10px] dark:border-neutral-600">
+                K
+              </kbd>
+            </button>
+
+            <div
+              ref={toggleRef}
+              onClick={toggleTheme}
+              className="cursor-pointer"
+            >
+              <Switch
+                isChecked={resolvedTheme === "dark"}
+                onChange={() => {}}
+              />
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+
+      <SearchModal
+        open={searchOpen}
+        onOpenChange={setSearchOpen}
+      />
+    </>
   );
 }
