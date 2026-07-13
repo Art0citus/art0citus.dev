@@ -17,7 +17,7 @@ export default function GithubActivity() {
           </p>
         </div>
 
-        <div className="overflow-x-auto rounded-6xl  bg-card p-8 shadow-2xl">
+        <div className="overflow-x-auto rounded-6xl  bg-card p-8">
           <GitHubCalendar
             username={GITHUB_USERNAME}
             colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
