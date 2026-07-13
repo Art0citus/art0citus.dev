@@ -48,27 +48,6 @@ const items = [
             },
         ],
     },
-
-    {
-        heading: "Projects",
-        children: [
-            {
-                title: "Expenny",
-                icon: Folder,
-                href: "/#projects",
-            },
-            {
-                title: "Tirtle",
-                icon: Folder,
-                href: "/#projects",
-            },
-            {
-                title: "ArtoBot",
-                icon: Folder,
-                href: "/#projects",
-            },
-        ],
-    },
 ];
 
 export default function SearchModal({
@@ -115,9 +94,7 @@ export default function SearchModal({
           max-w-xl
           -translate-x-1/2
           overflow-hidden
-          rounded-2xl
-          border
-          border-border
+          rounded-6xl
           bg-background
           shadow-2xl
         "
@@ -127,8 +104,6 @@ export default function SearchModal({
                     placeholder="Search anything..."
                     className="
             w-full
-            border-b
-            border-border
             bg-transparent
             px-5
             py-4
