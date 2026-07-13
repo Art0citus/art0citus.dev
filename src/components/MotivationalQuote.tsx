@@ -26,7 +26,7 @@ export default function MotivationalQuote() {
   return (
     <section className="flex justify-center bg-background px-4 py-32">
       <div className="w-full max-w-4xl">
-        <div className="rounded-3xl  bg-card p-10 text-center shadow-2xl sm:p-14">
+        <div className="rounded-3xl   text-center  sm:p-14">
           <p className="text-2xl font-medium italic leading-relaxed sm:text-3xl">
             &ldquo;{quote.text}&rdquo;
           </p>
