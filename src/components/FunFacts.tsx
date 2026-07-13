@@ -25,10 +25,10 @@ export default function FunFacts() {
       className="flex justify-center bg-background px-4 pt-32 pb-48"
     >
       <div className="flex w-full max-w-4xl flex-col items-start gap-12">
-        <div className="w-full max-w-sm">
+        <div className="flex flex-row w-full ">
           <h2 className="font-sans text-5xl">Personal</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A few things I love outside of code. Drag through the stacks.
+          <p className="flex justify-end mt-4 text-lg text-muted-foreground">
+            A few things I love outside of code.
           </p>
         </div>
 
