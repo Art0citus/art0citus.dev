@@ -2,17 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import Switch from "@/components/Switch";
-import SearchModal from "@/components/SearchModal";
 
 export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
 
   const [showNavbar, setShowNavbar] = useState(true);
-  const [searchOpen, setSearchOpen] = useState(false);
+
 
   const toggleRef = useRef<HTMLDivElement>(null);
 
@@ -117,18 +115,6 @@ export default function Navbar() {
 
           {/* Right */}
           <div className="flex items-center gap-5">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="hidden min-w-[110px] items-center gap-2 rounded-full border border-neutral-200 px-4 py-1.5 text-sm text-neutral-500 transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 md:flex"
-            >
-              <Search size={14} />
-
-              <span>Ctrl</span>
-
-              <kbd className="rounded border border-neutral-300 px-1 text-[10px] dark:border-neutral-600">
-                K
-              </kbd>
-            </button>
 
             <div
               ref={toggleRef}
@@ -143,11 +129,6 @@ export default function Navbar() {
           </div>
         </nav>
       </header>
-
-      <SearchModal
-        open={searchOpen}
-        onOpenChange={setSearchOpen}
-      />
     </>
   );
 }
