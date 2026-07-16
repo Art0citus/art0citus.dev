@@ -1,15 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 
-type SpotifyTrack = {
-  isPlaying: boolean;
-  name: string;
-  artist: string;
-  albumImage: string | null;
-  url: string;
-};
 
 function getGreeting(hour: number) {
   if (hour < 5) return "Good night";
@@ -22,24 +14,11 @@ function getGreeting(hour: number) {
 export default function NowCard() {
   const [open, setOpen] = useState(false);
   const [now, setNow] = useState<Date | null>(null);
-  const [track, setTrack] = useState<SpotifyTrack | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setNow(new Date());
     const interval = setInterval(() => setNow(new Date()), 30_000);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const fetchTrack = () => {
-      fetch("/api/spotify", { cache: "no-store" })
-        .then((res) => (res.ok ? res.json() : null))
-        .then(setTrack)
-        .catch(() => setTrack(null));
-    };
-    fetchTrack();
-    const interval = setInterval(fetchTrack, 60_000);
     return () => clearInterval(interval);
   }, []);
 
@@ -87,41 +66,7 @@ export default function NowCard() {
 
           <div className="h-px w-full bg-border" />
 
-          {/* Last played */}
-          <div className="px-4 py-4">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-              {track?.isPlaying ? "Now playing" : "Last played"}
-            </p>
-
-            {track ? (
-              <a
-                href={track.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-accent"
-              >
-                {track.albumImage ? (
-                  <Image
-                    src={track.albumImage}
-                    alt={track.name}
-                    width={40}
-                    height={40}
-                    className="shrink-0 rounded-lg object-cover"
-                  />
-                ) : (
-                  <div className="h-10 w-10 shrink-0 rounded-lg bg-muted" />
-                )}
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-medium">{track.name}</p>
-                  <p className="truncate text-xs text-muted-foreground">{track.artist}</p>
-                </div>
-              </a>
-            ) : (
-              <p className="mt-3 text-sm text-muted-foreground">Nothing to show yet.</p>
-            )}
-          </div>
-
-          <div className="h-px w-full bg-border" />
+         
 
           {/* Quick links */}
           <div className="flex items-center gap-3 px-4 py-3">
