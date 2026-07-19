@@ -27,7 +27,7 @@ export default function MotivationalQuote() {
   return (
     <section className="flex justify-center bg-background px-4 py-32">
       <div className="w-full max-w-4xl">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#6ED7F6] to-slate-200 p-10 text-center shadow-2xl sm:p-14">
+        <div className="relative overflow-hidden rounded-3xl bg-[#6DD8F8] to-slate-200 p-10 text-center shadow-2xl sm:p-14">
           <p className="relative z-10 max-w-2xl mx-auto text-2xl font-medium italic leading-relaxed text-slate-900 sm:text-3xl">
             &ldquo;{quote.text}&rdquo;
           </p>
