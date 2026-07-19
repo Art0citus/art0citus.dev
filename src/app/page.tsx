@@ -1,24 +1,13 @@
-"use client";
-
-import { useState } from "react";
-
-import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import GithubActivity from "@/components/GithubActivity";
 import ProjectStack from "@/components/ProjectStack";
+import TechStack from "@/components/TechStack";
 import FunFacts from "@/components/FunFacts";
 import MotivationalQuote from "@/components/MotivationalQuote";
 import Footer from "@/components/Footer";
-import TechStack from "@/components/TechStack";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-
-  if (loading) {
-    return <LoadingScreen onComplete={() => setLoading(false)} />;
-  }
-
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
