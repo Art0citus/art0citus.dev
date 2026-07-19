@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import GithubActivity from "@/components/GithubActivity";
+import Work from "@/components/Work";
 import ProjectStack from "@/components/ProjectStack";
 import TechStack from "@/components/TechStack";
 import FunFacts from "@/components/FunFacts";
@@ -14,7 +14,7 @@ export default function Home() {
 
       <main className="flex flex-1 flex-col gap-24">
         <Hero />
-        <GithubActivity />
+        <Work />
         <ProjectStack />
         <TechStack />
         <FunFacts />
