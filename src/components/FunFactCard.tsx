@@ -13,8 +13,10 @@ export default function FunFactCard({ image, title, subtitle }: FunFactCardProps
         src={image}
         alt={title}
         fill
-        className="object-cover"
+        className="pointer-events-none object-cover [-webkit-user-drag:none] select-none"
         sizes="256px"
+        draggable={false}
+        onDragStart={(e) => e.preventDefault()}
       />
 
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-10">
