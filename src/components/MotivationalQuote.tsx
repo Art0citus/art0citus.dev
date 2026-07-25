@@ -27,13 +27,34 @@ export default function MotivationalQuote() {
   return (
     <section className="flex justify-center bg-background px-4 py-32">
       <div className="w-full max-w-4xl">
-        <div className="relative overflow-hidden rounded-3xl bg-[#6DD8F8] to-slate-200 p-10 text-center shadow-2xl sm:p-14">
-          <p className="relative z-10 max-w-2xl mx-auto text-2xl font-medium italic leading-relaxed text-slate-900 sm:text-3xl">
-            &ldquo;{quote.text}&rdquo;
-          </p>
-          <p className="relative z-10 mt-6 text-sm uppercase tracking-widest text-slate-700">
-            &mdash; {quote.author}
-          </p>
+        <div className="relative overflow-hidden rounded-3xl bg-[#6DD8F8] p-10 text-center shadow-2xl sm:p-14">
+          {/*
+            All quotes are stacked in the same grid cell (row-start-1 / col-start-1).
+            CSS Grid auto-sizes the row to fit the TALLEST child automatically,
+            so the card's height is always exactly as tall as the longest quote
+            needs — no matter which one is currently showing, and no hardcoded
+            pixel guess required.
+          */}
+          <div className="relative z-10 mx-auto grid max-w-2xl">
+            {quotes.map((q) => (
+              <div
+                key={q.text}
+                className={`col-start-1 row-start-1 flex flex-col items-center justify-center transition-opacity duration-300 ${
+                  q.text === quote.text
+                    ? "opacity-100"
+                    : "pointer-events-none opacity-0"
+                }`}
+                aria-hidden={q.text !== quote.text}
+              >
+                <p className="text-2xl font-medium italic leading-relaxed text-slate-900 sm:text-3xl">
+                  &ldquo;{q.text}&rdquo;
+                </p>
+                <p className="mt-6 text-sm uppercase tracking-widest text-slate-700">
+                  &mdash; {q.author}
+                </p>
+              </div>
+            ))}
+          </div>
 
           {/* Spider-Man, carried over from the old loading screen */}
           <Image
