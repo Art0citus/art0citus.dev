@@ -34,6 +34,8 @@ const contactInfo = [
   },
 ];
 
+const MESSAGE_MAX = 500;
+
 type SubmitStatus = {
   type: "success" | "error" | null;
   message: string;
@@ -48,6 +50,7 @@ function FormField({
   onChange,
   placeholder,
   rows,
+  maxLength,
 }: {
   id: string;
   label: string;
@@ -57,29 +60,53 @@ function FormField({
   onChange: (v: string) => void;
   placeholder: string;
   rows?: number;
+  maxLength?: number;
 }) {
-  const shared =
-    "peer w-full rounded-xl border border-border bg-background py-3 pl-11 pr-4 text-sm outline-none transition-colors duration-200 focus:border-foreground/40";
-
   return (
-    <div>
-      <label
-        htmlFor={id}
-        className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted-foreground"
-      >
-        {label}
-      </label>
+    <div className="group">
+      <div className="mb-2 flex items-center justify-between">
+        <label
+          htmlFor={id}
+          className="block text-xs font-medium uppercase tracking-wide text-muted-foreground transition-colors duration-200 group-focus-within:text-foreground"
+        >
+          {label}
+        </label>
+        {maxLength && (
+          <span
+            className={`text-[10px] tabular-nums transition-colors duration-200 ${
+              value.length > maxLength * 0.9
+                ? "text-amber-500"
+                : "text-muted-foreground"
+            }`}
+          >
+            {value.length}/{maxLength}
+          </span>
+        )}
+      </div>
 
-      <div className="relative">
+      {/* Icon and input are normal flex siblings — never overlap, regardless of content length */}
+      <div
+        className={`flex gap-3 rounded-xl border border-border bg-background px-4 py-3 shadow-sm transition-all duration-200 focus-within:-translate-y-0.5 focus-within:border-foreground/40 focus-within:shadow-md focus-within:ring-4 focus-within:ring-foreground/[0.04] ${
+          rows ? "items-start" : "items-center"
+        }`}
+      >
+        <Icon
+          size={16}
+          className={`shrink-0 text-muted-foreground transition-all duration-200 group-focus-within:scale-110 group-focus-within:text-foreground ${
+            rows ? "mt-0.5" : ""
+          }`}
+        />
+
         {rows ? (
           <textarea
             id={id}
             rows={rows}
             required
+            maxLength={maxLength}
             placeholder={placeholder}
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className={`${shared} resize-none`}
+            className="min-w-0 flex-1 resize-none bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
         ) : (
           <input
@@ -89,16 +116,9 @@ function FormField({
             placeholder={placeholder}
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className={shared}
+            className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
         )}
-
-        <Icon
-          size={16}
-          className={`pointer-events-none absolute left-4 text-muted-foreground transition-colors duration-200 peer-focus:text-foreground ${
-            rows ? "top-3.5" : "top-1/2 -translate-y-1/2"
-          }`}
-        />
       </div>
     </div>
   );
@@ -147,7 +167,10 @@ export default function Contact() {
       </div>
 
       <div className="relative z-10 flex w-full max-w-2xl flex-col gap-10">
-        <div className="text-center">
+        <div
+          className="animate-[rise-in_0.5s_ease-out_backwards] text-center"
+          style={{ animationDelay: "0ms" }}
+        >
           <h2 className="font-pixelta text-5xl">Let&apos;s Connect</h2>
           <p className="mx-auto mt-4 max-w-md text-lg text-muted-foreground">
             Got an idea or project? I&apos;d love to hear about it and explore
@@ -156,9 +179,12 @@ export default function Contact() {
         </div>
 
         {/* Form */}
-        <div className="rounded-3xl border border-border bg-card p-8 shadow-2xl sm:p-10">
-          <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent">
+        <div
+          className="animate-[rise-in_0.5s_ease-out_backwards] rounded-3xl border border-border bg-card p-8 shadow-2xl transition-shadow duration-300 hover:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15)] sm:p-10"
+          style={{ animationDelay: "80ms" }}
+        >
+          <div className="group mb-8 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
               <MessageSquare size={18} />
             </div>
             <div>
@@ -196,6 +222,7 @@ export default function Contact() {
               label="Message"
               icon={MessageSquare}
               rows={5}
+              maxLength={MESSAGE_MAX}
               value={formData.message}
               onChange={(v) => setFormData({ ...formData, message: v })}
               placeholder="What's on your mind?"
@@ -204,8 +231,9 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98] disabled:opacity-60 disabled:hover:translate-y-0"
+              className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] disabled:opacity-60 disabled:hover:translate-y-0"
             >
+              <span className="absolute inset-0 -translate-x-full bg-white/10 transition-transform duration-500 group-hover:translate-x-full" />
               {isLoading ? (
                 <>
                   <span className="h-4 w-4 animate-spin rounded-full border-2 border-background/30 border-t-background" />
@@ -232,9 +260,9 @@ export default function Contact() {
                 }`}
               >
                 {submitStatus.type === "success" ? (
-                  <CheckCircle size={18} className="shrink-0" />
+                  <CheckCircle size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
                 ) : (
-                  <AlertCircle size={18} className="shrink-0" />
+                  <AlertCircle size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
                 )}
                 <p className="text-sm">{submitStatus.message}</p>
               </div>
@@ -243,7 +271,10 @@ export default function Contact() {
         </div>
 
         {/* Contact info row */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div
+          className="grid animate-[rise-in_0.5s_ease-out_backwards] grid-cols-1 gap-4 sm:grid-cols-3"
+          style={{ animationDelay: "160ms" }}
+        >
           {contactInfo.map((item) => {
             const inner = (
               <>
@@ -277,7 +308,10 @@ export default function Contact() {
         </div>
 
         {/* Availability banner */}
-        <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-5 shadow-2xl">
+        <div
+          className="flex animate-[rise-in_0.5s_ease-out_backwards] items-center gap-3 rounded-2xl border border-border bg-card p-5 shadow-2xl transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700"
+          style={{ animationDelay: "240ms" }}
+        >
           <span className="relative flex h-3 w-3 shrink-0">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
             <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
@@ -300,6 +334,35 @@ export default function Contact() {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+        @keyframes rise-in {
+          from {
+            opacity: 0;
+            transform: translateY(16px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes pop-in {
+          0% {
+            transform: scale(0.5);
+            opacity: 0;
+          }
+          70% {
+            transform: scale(1.1);
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          [style*="rise-in"],
+          [class*="animate-"] {
+            animation: none !important;
           }
         }
       `}</style>
