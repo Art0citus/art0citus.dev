@@ -53,11 +53,17 @@ export default function FunFacts() {
     >
       <div className="flex w-full max-w-4xl flex-col items-start gap-12">
         <div className="w-full">
-          <h2 className="font-sans text-5xl">Personal</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A few things I love outside of code.
-          </p>
-        </div>
+  <div className="flex items-center gap-4">
+    <h2 className="font-sans text-5xl whitespace-nowrap">
+      Personal
+    </h2>
+    <div className="h-px flex-1 bg-border" />
+  </div>
+
+  <p className="mt-4 text-lg text-muted-foreground">
+    A few things I love outside of code.
+  </p>
+</div>
 
         <div className="flex w-full flex-col items-center gap-16 sm:flex-row sm:items-start sm:justify-center sm:gap-24">
           {/* Books */}
