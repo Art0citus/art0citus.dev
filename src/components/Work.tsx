@@ -18,7 +18,13 @@ export default function Work() {
     >
       <div className="w-full max-w-4xl">
         <div className="mb-20">
-          <h2 className="font-sans text-5xl">Work</h2>
+          <div className="flex items-center gap-4">
+            <h2 className="font-sans text-5xl whitespace-nowrap">
+              Work
+            </h2>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Experience, open source contributions, and the code I ship along
             the way.
