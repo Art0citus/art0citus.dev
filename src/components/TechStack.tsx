@@ -29,25 +29,21 @@ const displayNames: Record<string, string> = {
 
 const categories = [
     {
-        number: "01",
         icon: Monitor,
         label: "Frontend",
         items: ["nextjs", "react", "typescript", "javascript", "tailwindcss", "flutter", "dart"],
     },
     {
-        number: "02",
         icon: Server,
         label: "Backend",
         items: ["nodejs", "express", "go", "python", "fastapi", "java"],
     },
     {
-        number: "03",
         icon: Database,
         label: "Databases",
         items: ["postgresql", "mongodb", "redis"],
     },
     {
-        number: "04",
         icon: Wrench,
         label: "DevOps & Tools",
         items: ["docker", "git", "github", "linux"],
@@ -96,10 +92,12 @@ export default function TechStack() {
             className="flex justify-center bg-background px-4 py-32"
         >
             <div className="w-full max-w-4xl">
-                <div className="flex items-center justify-between">
-                    <h2 className="font-sans text-5xl">Stack</h2>
+                <div className="flex items-center gap-4">
+                    <h2 className="font-sans text-5xl whitespace-nowrap">
+                        Stack
+                    </h2>
+                    <div className="h-px flex-1 bg-border" />
                 </div>
-
                 <p className="mt-4 text-lg text-muted-foreground">
                     Technologies I use in building.
                 </p>
@@ -111,9 +109,6 @@ export default function TechStack() {
                             className="grid grid-cols-1 gap-4 sm:grid-cols-[220px_1fr] sm:items-start"
                         >
                             <div className="flex items-center gap-2">
-                                <span className="text-sm italic text-red-500">
-                                    {cat.number}
-                                </span>
                                 <cat.icon size={16} className="text-muted-foreground" />
                                 <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
                                     {cat.label}
