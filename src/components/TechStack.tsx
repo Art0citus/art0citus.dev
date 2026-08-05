@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef, useState } from "react";
 import StackIcon from "tech-stack-icons";
-import { Monitor, Server, Database, Wrench } from "lucide-react";
+import { Monitor, Server, Database, Wrench, Volume2, VolumeX } from "lucide-react";
 
 const displayNames: Record<string, string> = {
     nextjs: "Next.js",
@@ -54,22 +55,61 @@ const categories = [
 ];
 
 export default function TechStack() {
+    const audioCtxRef = useRef<AudioContext | null>(null);
+
+    // Synthesizes a short, clean rising "blip" — no audio file needed.
+    const playHoverSound = () => {
+
+        try {
+            if (!audioCtxRef.current) {
+                const AudioCtx =
+                    window.AudioContext ||
+                    (window as unknown as { webkitAudioContext: typeof AudioContext })
+                        .webkitAudioContext;
+                audioCtxRef.current = new AudioCtx();
+            }
+            const ctx = audioCtxRef.current;
+            if (ctx.state === "suspended") ctx.resume();
+
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(700, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1100, ctx.currentTime + 0.07);
+
+            gain.gain.setValueAtTime(0.06, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.1);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.1);
+        } catch {
+            // Web Audio unsupported/blocked — fail silently, no sound is fine.
+        }
+    };
+
     return (
         <section
             id="tech"
             className="flex justify-center bg-background px-4 py-32"
         >
             <div className="w-full max-w-4xl">
-                <h2 className="font-sans text-5xl">Stack</h2>
+                <div className="flex items-center justify-between">
+                    <h2 className="font-sans text-5xl">Stack</h2>
+                </div>
+
                 <p className="mt-4 text-lg text-muted-foreground">
                     Technologies I use in building.
                 </p>
 
-                <div className="mt-12 h-px w-full bg-border" />
-
-                {categories.map((cat, i) => (
-                    <div key={cat.label}>
-                        <div className="grid grid-cols-1 gap-4 py-8 sm:grid-cols-[220px_1fr] sm:items-start">
+                <div className="mt-16 flex flex-col gap-14">
+                    {categories.map((cat) => (
+                        <div
+                            key={cat.label}
+                            className="grid grid-cols-1 gap-4 sm:grid-cols-[220px_1fr] sm:items-start"
+                        >
                             <div className="flex items-center gap-2">
                                 <span className="text-sm italic text-red-500">
                                     {cat.number}
@@ -80,11 +120,12 @@ export default function TechStack() {
                                 </span>
                             </div>
 
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2.5">
                                 {cat.items.map((item) => (
                                     <span
                                         key={item}
-                                        className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium uppercase tracking-wide transition-colors duration-200 hover:bg-accent"
+                                        onMouseEnter={playHoverSound}
+                                        className="group flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium uppercase tracking-wide transition-all duration-200 hover:-translate-y-1 hover:scale-110 hover:border-foreground hover:bg-foreground hover:text-background hover:shadow-lg"
                                     >
                                         <span className="h-4 w-4 shrink-0">
                                             <StackIcon
@@ -97,10 +138,8 @@ export default function TechStack() {
                                 ))}
                             </div>
                         </div>
-
-                        <div className="h-px w-full bg-border" />
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     );
