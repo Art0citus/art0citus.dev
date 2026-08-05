@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const quotes = [
@@ -24,10 +24,40 @@ export default function MotivationalQuote() {
     setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
   }, []);
 
+  const spidyAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playSpidySound = () => {
+    if (typeof window === "undefined") return;
+
+    try {
+      if (!spidyAudioRef.current) {
+        spidyAudioRef.current = new Audio("/audio/spidy.mp3");
+        spidyAudioRef.current.volume = 0.4;
+      }
+      spidyAudioRef.current.currentTime = 0;
+      spidyAudioRef.current.play().catch(() => {
+        // Autoplay blocked before any user interaction — safe to ignore.
+      });
+    } catch {
+      // Audio unsupported/blocked — fail silently.
+    }
+  };
+
+  const stopSpidySound = () => {
+    const audio = spidyAudioRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.currentTime = 0;
+  };
+
   return (
     <section className="flex justify-center bg-background px-4 py-32">
       <div className="w-full max-w-4xl">
-        <div className="relative overflow-hidden rounded-3xl bg-[#6DD8F8] p-10 text-center shadow-2xl sm:p-14">
+        <div
+          className="relative overflow-hidden rounded-3xl bg-[#6DD8F8] p-10 text-center shadow-2xl sm:p-14"
+          onMouseEnter={playSpidySound}
+          onMouseLeave={stopSpidySound}
+        >
           {/*
             All quotes are stacked in the same grid cell (row-start-1 / col-start-1).
             CSS Grid auto-sizes the row to fit the TALLEST child automatically,
@@ -56,15 +86,17 @@ export default function MotivationalQuote() {
             ))}
           </div>
 
-          {/* Spider-Man, carried over from the old loading screen */}
-          <Image
-            src="/gifs/spidy.gif"
-            alt=""
-            width={140}
-            height={140}
-            unoptimized
-            className="pointer-events-none absolute -bottom-4 -right-2 z-0 opacity-90 sm:w-[160px]"
-          />
+          {/* Spider-Man decoration */}
+          <div className="absolute -bottom-4 -right-2 z-0 inline-block">
+            <Image
+              src="/gifs/spidy.gif"
+              alt=""
+              width={140}
+              height={140}
+              unoptimized
+              className="pointer-events-none opacity-90 sm:w-[160px]"
+            />
+          </div>
         </div>
       </div>
     </section>
