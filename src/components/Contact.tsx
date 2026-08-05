@@ -3,31 +3,31 @@
 import { useState, FormEvent } from "react";
 import { sendContactEmail } from "@/lib/email";
 import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  CheckCircle,
-  AlertCircle,
-  User,
-  MessageSquare,
-} from "lucide-react";
+  MapPinIcon,
+  PhoneCallIcon,
+  SendIcon,
+  MailIcon,
+  UserIcon,
+  MessageSquareIcon,
+  CheckCircleIcon,
+  AlertCircleIcon,
+} from "@animateicons/react/lucide";
 
 const contactInfo = [
   {
-    icon: Mail,
+    icon: MailIcon,
     label: "Email",
     value: "mritik424@gmail.com",
     href: "mailto:mritik424@gmail.com",
   },
   {
-    icon: Phone,
+    icon: PhoneCallIcon,
     label: "Phone",
     value: "+91 8433175656",
     href: "tel:+918433175656",
   },
   {
-    icon: MapPin,
+    icon: MapPinIcon,
     label: "Location",
     value: "Delhi, India",
     href: undefined,
@@ -55,7 +55,7 @@ function FormField({
   id: string;
   label: string;
   type?: string;
-  icon: typeof Mail;
+  icon: typeof MailIcon;
   value: string;
   onChange: (v: string) => void;
   placeholder: string;
@@ -185,7 +185,7 @@ export default function Contact() {
         >
           <div className="group mb-8 flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
-              <MessageSquare size={18} />
+              <MessageSquareIcon size={18} />
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">
@@ -200,7 +200,7 @@ export default function Contact() {
               <FormField
                 id="name"
                 label="Name"
-                icon={User}
+                icon={UserIcon}
                 value={formData.name}
                 onChange={(v) => setFormData({ ...formData, name: v })}
                 placeholder="Your name"
@@ -210,7 +210,7 @@ export default function Contact() {
                 id="email"
                 label="Email"
                 type="email"
-                icon={Mail}
+                icon={MailIcon}
                 value={formData.email}
                 onChange={(v) => setFormData({ ...formData, email: v })}
                 placeholder="you@example.com"
@@ -220,7 +220,7 @@ export default function Contact() {
             <FormField
               id="message"
               label="Message"
-              icon={MessageSquare}
+              icon={MessageSquareIcon}
               rows={5}
               maxLength={MESSAGE_MAX}
               value={formData.message}
@@ -242,7 +242,7 @@ export default function Contact() {
               ) : (
                 <>
                   Send Message
-                  <Send
+                  <SendIcon
                     size={16}
                     className="transition-transform duration-200 group-hover:translate-x-1"
                   />
@@ -260,9 +260,9 @@ export default function Contact() {
                 }`}
               >
                 {submitStatus.type === "success" ? (
-                  <CheckCircle size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
+                  <CheckCircleIcon size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
                 ) : (
-                  <AlertCircle size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
+                  <AlertCircleIcon size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
                 )}
                 <p className="text-sm">{submitStatus.message}</p>
               </div>
