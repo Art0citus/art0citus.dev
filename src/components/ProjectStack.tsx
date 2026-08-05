@@ -9,14 +9,19 @@ export default function ProjectStack() {
     >
       <div className="w-full max-w-4xl">
         <div className="mb-16">
-          <h2 className="font-sans text-5xl">Featured Projects</h2>
+          <div className="flex items-center gap-3">
+            <span className="text-sm italic text-red-500">03</span>
+            <h2 className="text-3xl font-bold">Things I&apos;ve Built</h2>
+            <div className="ml-4 h-px flex-1 bg-border" />
+          </div>
+
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Some of my favourite projects exploring backend engineering,
             cloud computing and AI.
           </p>
         </div>
 
-        <ul className="flex flex-col gap-6">
+        <ul className="flex flex-col gap-24">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
