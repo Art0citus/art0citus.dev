@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+
 import ProfileStory from "./ProfileStory";
+import LiquidButton from "@/components/ui/LiquidButton";
+import { MapPinIcon } from "@animateicons/react/lucide";
 
 export default function Hero() {
     return (
@@ -115,14 +117,13 @@ export default function Hero() {
 
                     <div className="absolute left-0 top-[395px]">
                         <p className=" mt-2 text-2xl">
-                            Building Scalable Backend Systems
+                            Building software that just works.
                         </p>
                     </div>
 
                     <div className="absolute left-0 top-[430px]">
                         <p className=" mt-6 max-w-2xl text-lg leading-8">
-                            Building web and mobile applications, especially scalable backend systems.
-                            Creating scalable software with a strong focus on backend engineering and solving real-world problems
+                            I enjoy turning ideas into fast, scalable web and mobile applications, with a strong focus on backend engineering, clean architecture, and building systems that are reliable, maintainable, and built to grow. Whether it's designing APIs, working with databases, or solving real-world problems, I'm always looking for better ways to build software.
                         </p>
                     </div>
                     <div className="absolute left-0 top-[600px]">
@@ -131,7 +132,7 @@ export default function Hero() {
 
                             <span className="flex items-center gap-2 rounded-full  bg-card px-4 py-2 text-sm text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700">
 
-                                <MapPin size={14} />
+                                <MapPinIcon size={14} />
 
                                 Delhi, India
 
@@ -156,7 +157,22 @@ export default function Hero() {
                         </div>
 
                     </div>
-
+                    <div className="absolute left-0 top-[650px]">
+                        <LiquidButton
+                            href="/Ritik_Mishra_Resume.pdf"
+                            download
+                        >
+                                <Image
+                                    src="/icons/download.svg"
+                                    alt="Download"
+                                    width={18}
+                                    height={18}
+                                    className="dark:invert"
+                                />
+                                <span className="text-sm font-medium">Resume</span>
+                            
+                        </LiquidButton>
+                    </div>
                 </div>
             </div>
         </section>
