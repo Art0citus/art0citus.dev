@@ -10,7 +10,6 @@ export default function ProjectStack() {
       <div className="w-full max-w-4xl">
         <div className="mb-16">
           <div className="flex items-center gap-3">
-            <span className="text-sm italic text-red-500">03</span>
             <h2 className="text-3xl font-bold">Things I&apos;ve Built</h2>
             <div className="ml-4 h-px flex-1 bg-border" />
           </div>
