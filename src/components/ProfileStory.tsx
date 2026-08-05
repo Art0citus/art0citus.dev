@@ -1,95 +1,182 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X, Plus } from "lucide-react";
+import CameraCapture from "./CameraCapture";
 
 const STORY_DURATION = 5000; // ms
+const DEFAULT_STORY = { url: "/images/logo.png", uploadedAt: "" };
 
 export default function ProfileStory() {
-  const [open, setOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const adminKey = searchParams.get("admin");
+  const isAdminUI = Boolean(adminKey); // presence only shows the button; the
+  // real check happens server-side on upload — see app/api/stories/route.ts
 
-  // Auto-close after the story duration, like a real Instagram story
+  const [stories, setStories] = useState<{ url: string; uploadedAt: string }[]>([
+    DEFAULT_STORY,
+  ]);
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [cameraOpen, setCameraOpen] = useState(false);
+
+  const fetchStories = useCallback(() => {
+    fetch("/api/stories", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stories && data.stories.length > 0) {
+          setStories(data.stories);
+        }
+      })
+      .catch(() => {
+        // Keep the default fallback story on any error.
+      });
+  }, []);
+
+  useEffect(() => {
+    fetchStories();
+  }, [fetchStories]);
+
+  const openViewer = () => {
+    setIndex(0);
+    setOpen(true);
+  };
+
+  const closeViewer = () => setOpen(false);
+
+  const goNext = useCallback(() => {
+    setIndex((prev) => {
+      if (prev + 1 >= stories.length) {
+        setOpen(false);
+        return prev;
+      }
+      return prev + 1;
+    });
+  }, [stories.length]);
+
+  const goPrev = () => {
+    setIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  // Auto-advance through stories, like a real Instagram story
   useEffect(() => {
     if (!open) return;
-    const timer = setTimeout(() => setOpen(false), STORY_DURATION);
+    const timer = setTimeout(goNext, STORY_DURATION);
     return () => clearTimeout(timer);
-  }, [open]);
+  }, [open, index, goNext]);
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        aria-label="View story"
-        className="relative h-40 w-40 shrink-0 rounded-full"
-      >
-        {/* Rotating gradient ring */}
-        <div className="animate-spin-slow absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888,#833ab4,#f09433)]" />
-
-        {/* Gap so the ring reads as a ring, not a filled disc */}
-        <div className="absolute inset-[3px] rounded-full bg-background" />
-
-        {/* Avatar */}
-        <div className="absolute inset-[7px] overflow-hidden rounded-full border-2 border-white shadow-xl">
-          <Image
-            src="/images/face1.png"
-            alt="Ritik Mishra"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </button>
-
-      {open && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
-          onClick={() => setOpen(false)}
+      <div className="relative h-40 w-40 shrink-0">
+        <button
+          onClick={openViewer}
+          aria-label="View story"
+          className="relative h-full w-full rounded-full"
         >
-          <button
-            onClick={() => setOpen(false)}
-            aria-label="Close story"
-            className="absolute right-6 top-6 text-white/80 transition-colors hover:text-white"
-          >
-            <X size={28} />
-          </button>
-
-          <div
-            className="relative h-[70vh] w-[90vw] max-w-md overflow-hidden rounded-2xl bg-neutral-900"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Story progress bar */}
-            <div className="absolute left-4 right-4 top-4 z-10 h-1 overflow-hidden rounded-full bg-white/30">
-              <div
-                className="h-full origin-left rounded-full bg-white"
-                style={{
-                  animation: `story-progress ${STORY_DURATION}ms linear forwards`,
-                }}
-              />
-            </div>
-
-            <div className="absolute left-4 top-9 z-10 flex items-center gap-2">
-              <div className="h-7 w-7 overflow-hidden rounded-full border border-white/50">
-                <Image
-                  src="/images/face1.png"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="object-cover"
-                />
-              </div>
-              <span className="text-sm font-medium text-white">
-                Ritik Mishra
-              </span>
-            </div>
-
+          {/* Rotating gradient ring */}
+          <div className="animate-spin-slow absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888,#833ab4,#f09433)]" />
+          <div className="absolute inset-[3px] rounded-full bg-background" />
+          <div className="absolute inset-[7px] overflow-hidden rounded-full border-2 border-white shadow-xl">
             <Image
-              src="/images/logo.png"
-              alt="Spidy Logo"
+              src="/images/face1.png"
+              alt="Ritik Mishra"
               fill
-              className="object-contain"
+              className="object-cover"
             />
           </div>
+        </button>
+
+        {/* Admin-only: add-story button. Only its VISIBILITY depends on the
+            URL param — the actual upload is verified server-side. */}
+        {isAdminUI && (
+          <button
+            onClick={() => setCameraOpen(true)}
+            aria-label="Add story"
+            className="absolute bottom-1 right-1 flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-blue-500 text-white shadow-lg transition-transform hover:scale-105"
+          >
+            <Plus size={18} />
+          </button>
+        )}
+      </div>
+
+      {open && (
+        <div className="fixed inset-0 z-[100] flex flex-col bg-black">
+          {/* Segmented progress bar — one segment per story */}
+          <div className="absolute left-3 right-3 top-3 z-10 flex gap-1.5">
+            {stories.map((s, i) => (
+              <div
+                key={s.url}
+                className="h-1 flex-1 overflow-hidden rounded-full bg-white/30"
+              >
+                {i < index && <div className="h-full w-full bg-white" />}
+                {i === index && (
+                  <div
+                    key={`${s.url}-${open}`}
+                    className="h-full origin-left rounded-full bg-white"
+                    style={{
+                      animation: `story-progress ${STORY_DURATION}ms linear forwards`,
+                    }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="absolute left-4 top-8 z-10 flex items-center gap-2">
+            <div className="h-7 w-7 overflow-hidden rounded-full border border-white/50">
+              <Image
+                src="/images/face1.png"
+                alt=""
+                width={28}
+                height={28}
+                className="object-cover"
+              />
+            </div>
+            <span className="text-sm font-medium text-white">Ritik Mishra</span>
+          </div>
+
+          <button
+            onClick={closeViewer}
+            aria-label="Close story"
+            className="absolute right-4 top-8 z-10 text-white/80 transition-colors hover:text-white"
+          >
+            <X size={26} />
+          </button>
+
+          {/* Fullscreen story image */}
+          <div className="relative flex-1">
+            <Image
+              src={stories[index].url}
+              alt="Story"
+              fill
+              className="object-contain sm:object-cover"
+            />
+
+            {/* Tap zones: left third = previous, right two-thirds = next */}
+            <div className="absolute inset-0 flex">
+              <button
+                aria-label="Previous story"
+                onClick={goPrev}
+                className="h-full w-1/3"
+              />
+              <button
+                aria-label="Next story"
+                onClick={goNext}
+                className="h-full w-2/3"
+              />
+            </div>
+          </div>
         </div>
+      )}
+
+      {cameraOpen && adminKey && (
+        <CameraCapture
+          adminKey={adminKey}
+          onClose={() => setCameraOpen(false)}
+          onUploaded={fetchStories}
+        />
       )}
 
       <style jsx global>{`
