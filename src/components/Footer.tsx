@@ -16,14 +16,14 @@ export default function Footer() {
             {/* Top divider — now spans the full viewport width */}
             <div className="h-px w-full bg-neutral-200 dark:bg-neutral-800" />
 
-            <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+            <div className="w-full px-8 py-12 sm:px-10 lg:px-16">
                 <div className="flex flex-col items-center gap-6 pt-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
                     {/* Wordmark */}
                     <Link
                         href="/"
                         className="text-lg font-semibold tracking-tight text-neutral-900 transition-colors hover:text-neutral-600 dark:text-neutral-100 dark:hover:text-neutral-400"
                     >
-                        Art0<span className="text-red-500">citus</span>
+                        Art0<span className="text-#6DD8F8">citus</span>
                     </Link>
 
                     {/* Socials — flat icons, no cards/shadows */}
