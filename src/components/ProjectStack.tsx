@@ -20,7 +20,7 @@ export default function ProjectStack() {
           </p>
         </div>
 
-        <ul className="flex flex-col gap-24">
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
