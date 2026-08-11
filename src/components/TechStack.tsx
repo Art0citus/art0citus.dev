@@ -120,7 +120,7 @@ export default function TechStack() {
                                     <span
                                         key={item}
                                         onMouseEnter={playHoverSound}
-                                        className="group flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium uppercase tracking-wide transition-all duration-200 hover:-translate-y-1 hover:scale-110 hover:border-foreground hover:bg-foreground hover:text-background hover:shadow-lg"
+                                        className="group flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-xs font-medium uppercase tracking-wide transition-all duration-200 "
                                     >
                                         <span className="h-4 w-4 shrink-0">
                                             <StackIcon
