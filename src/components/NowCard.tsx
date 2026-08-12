@@ -58,18 +58,18 @@ export default function NowCard() {
       {open && (
         <div className="absolute left-0 top-12 z-[60] w-72 overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
           {/* Greeting */}
-          <div className="flex items-center justify-between px-4 pt-4">
+          <div className="flex items-center justify-between !px-5 !pt-5">
             <p className="text-sm font-semibold">{getGreeting(now?.getHours() ?? 12)}</p>
             <p className="text-sm text-muted-foreground">{timeLabel}</p>
           </div>
-          <p className="px-4 pb-4 text-xs text-muted-foreground">{dateLabel}</p>
+          <p className="!px-5 !pb-5 text-xs text-muted-foreground">{dateLabel}</p>
 
           <div className="h-px w-full bg-border" />
 
          
 
           {/* Quick links */}
-          <div className="flex items-center gap-3 px-4 py-3">
+          <div className="flex items-center gap-3 !px-5 !py-4">
             <a
               href="https://github.com/Art0citus"
               target="_blank"
