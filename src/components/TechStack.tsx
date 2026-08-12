@@ -92,7 +92,7 @@ export default function TechStack() {
             className="flex justify-center bg-background px-4 py-32"
         >
             <div className="w-full max-w-4xl">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-8">
                     <h2 className="font-sans text-5xl whitespace-nowrap">
                         Stack
                     </h2>
