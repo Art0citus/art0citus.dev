@@ -14,35 +14,39 @@ export default function GithubActivity() {
   const { resolvedTheme } = useTheme();
 
   return (
-    <div className="gh-calendar overflow-x-auto rounded-6xl">
-      <GitHubCalendar
-        username={GITHUB_USERNAME}
-        colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
-        theme={calendarTheme}
-        fontSize={14}
-        blockSize={12}
-        blockMargin={4}
-        blockRadius={4}
-      />
+    <div className="gh-calendar w-full overflow-x-auto">
+      <div className="flex min-w-max justify-center px-2">
+        <GitHubCalendar
+          username={GITHUB_USERNAME}
+          colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
+          theme={calendarTheme}
+          fontSize={13}
+          blockSize={11}
+          blockMargin={3}
+          blockRadius={3}
+        />
+      </div>
 
       <style jsx global>{`
-        /* Every day cell is a plain <rect> inside the calendar's <svg>.
-           Targeting the element itself avoids depending on any
-           library-internal class name, which has proven unreliable. */
         .gh-calendar svg rect {
-          transition: transform 0.15s ease-out, filter 0.15s ease-out;
+          transition:
+            transform 0.15s ease-out,
+            filter 0.15s ease-out;
           transform-box: fill-box;
           transform-origin: center;
           cursor: pointer;
         }
+
         .gh-calendar svg rect:hover {
-          transform: scale(1.4);
+          transform: scale(1.35);
           filter: drop-shadow(0 0 5px currentColor) brightness(1.3);
         }
+
         @media (prefers-reduced-motion: reduce) {
           .gh-calendar svg rect {
             transition: none;
           }
+
           .gh-calendar svg rect:hover {
             transform: none;
           }
