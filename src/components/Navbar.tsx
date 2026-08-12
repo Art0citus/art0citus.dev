@@ -74,7 +74,7 @@ export default function Navbar() {
         showNavbar ? "translate-y-0" : "-translate-y-20"
       }`}
     >
-      <nav className="flex h-11 w-full max-w-4xl items-center justify-between bg-white px-5 transition-colors dark:bg-background">
+      <nav className="flex h-16 w-full max-w-4xl items-center justify-between bg-white px-6 transition-colors dark:bg-background">
         {/* Left: pill + nav links */}
         <div className="flex items-center gap-6">
           <NowCard />
