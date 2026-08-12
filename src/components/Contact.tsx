@@ -309,7 +309,7 @@ export default function Contact() {
 
         {/* Availability banner */}
         <div
-          className="flex animate-[rise-in_0.5s_ease-out_backwards] items-center gap-3 rounded-2xl border border-border bg-card p-5 shadow-2xl transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700"
+          className="flex animate-[rise-in_0.5s_ease-out_backwards] items-center gap-9 rounded-2xl border border-border bg-card p-9 shadow-2xl transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700"
           style={{ animationDelay: "240ms" }}
         >
           <span className="relative flex h-3 w-3 shrink-0">
