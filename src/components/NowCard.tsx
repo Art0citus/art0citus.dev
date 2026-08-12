@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import LiquidButton from "@/components/ui/LiquidButton";
 
 
 function getGreeting(hour: number) {
@@ -47,14 +48,14 @@ export default function NowCard() {
     : "";
 
   return (
-    <div ref={containerRef} className="relative shrink-0">
-      <button
+    <div ref={containerRef} className="relative shrink-0 px-3">
+  <LiquidButton
         onClick={() => setOpen((prev) => !prev)}
-        className="flex h-8 items-center rounded-full bg-neutral-100 px-3 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+        size="compact"
+        className="!h-8"
       >
         {timeLabel}
-      </button>
-
+      </LiquidButton>
       {open && (
         <div className="absolute left-0 top-12 z-[60] w-72 overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
           {/* Greeting */}
