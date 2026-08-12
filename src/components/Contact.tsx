@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { sendContactEmail } from "@/lib/email";
+import LiquidButton from "@/components/ui/LiquidButton";
 import {
   MapPinIcon,
   PhoneCallIcon,
@@ -63,7 +64,7 @@ function FormField({
   maxLength?: number;
 }) {
   return (
-    <div className="group">
+    <div className="group min-w-0 w-full">
       <div className="mb-2 flex items-center justify-between">
         <label
           htmlFor={id}
@@ -86,7 +87,7 @@ function FormField({
 
       {/* Icon and input are normal flex siblings — never overlap, regardless of content length */}
       <div
-        className={`flex gap-3 rounded-xl border border-border bg-background px-4 py-3 shadow-sm transition-all duration-200 focus-within:-translate-y-0.5 focus-within:border-foreground/40 focus-within:shadow-md focus-within:ring-4 focus-within:ring-foreground/[0.04] ${
+        className={`w-full min-w-0 flex gap-3 rounded-xl border border-border bg-background px-4 py-3 shadow-sm transition-all duration-200 focus-within:-translate-y-0.5 focus-within:border-foreground/40 focus-within:shadow-md focus-within:ring-4 focus-within:ring-foreground/[0.04] ${
           rows ? "items-start" : "items-center"
         }`}
       >
@@ -158,7 +159,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative flex justify-center overflow-hidden bg-background px-4 py-40"
+      className="relative flex justify-center overflow-hidden bg-background px-4 pt-52 pb-40"
     >
       {/* Decorative background blobs */}
       <div className="pointer-events-none absolute inset-0">
@@ -168,35 +169,38 @@ export default function Contact() {
 
       <div className="relative z-10 flex w-full max-w-2xl flex-col gap-10">
         <div
-          className="animate-[rise-in_0.5s_ease-out_backwards] text-center"
-          style={{ animationDelay: "0ms" }}
-        >
-          <h2 className="font-pixelta text-5xl">Let&apos;s Connect</h2>
-          <p className="mx-auto mt-4 max-w-md text-lg text-muted-foreground">
-            Got an idea or project? I&apos;d love to hear about it and explore
-            how we can work together.
-          </p>
-        </div>
+  className="mx-auto w-full max-w-2xl text-center animate-[rise-in_0.5s_ease-out_backwards]"
+  style={{ animationDelay: "0ms" }}
+>
+  <h2 className="font-pixelta text-5xl">
+    Let&apos;s Connect
+  </h2>
+
+  <p className="mx-auto mt-4 max-w-md text-lg text-muted-foreground">
+    Got an idea or project? I&apos;d love to hear about it and explore
+    how we can work together.
+  </p>
+</div>
 
         {/* Form */}
         <div
-          className="animate-[rise-in_0.5s_ease-out_backwards] rounded-3xl border border-border bg-card p-8 shadow-2xl transition-shadow duration-300 hover:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15)] sm:p-10"
+          className="animate-[rise-in_0.5s_ease-out_backwards] rounded-3xl border border-border bg-card !p-8 shadow-2xl transition-shadow duration-300 hover:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15)] sm:!p-10"
           style={{ animationDelay: "80ms" }}
         >
           <div className="group mb-8 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl">
               <MessageSquareIcon size={18} />
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                Contact form
+              Let&apos;s Connect
               </p>
               <h3 className="text-lg font-bold">Send a message</h3>
             </div>
           </div>
 
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <form className="!w-full !max-w-full min-w-0 space-y-5" onSubmit={handleSubmit}>
+            <div className="grid w-full min-w-0 grid-cols-1 gap-5 sm:grid-cols-2">
               <FormField
                 id="name"
                 label="Name"
@@ -228,27 +232,24 @@ export default function Contact() {
               placeholder="What's on your mind?"
             />
 
-            <button
+            <LiquidButton
               type="submit"
               disabled={isLoading}
-              className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] disabled:opacity-60 disabled:hover:translate-y-0"
+              size="compact"
+              className="!h-9 !w-full !rounded-full"
             >
-              <span className="absolute inset-0 -translate-x-full bg-white/10 transition-transform duration-500 group-hover:translate-x-full" />
               {isLoading ? (
                 <>
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-background/30 border-t-background" />
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-foreground/30 border-t-foreground" />
                   Sending...
                 </>
               ) : (
                 <>
                   Send Message
-                  <SendIcon
-                    size={16}
-                    className="transition-transform duration-200 group-hover:translate-x-1"
-                  />
+                  <SendIcon size={16} />
                 </>
               )}
-            </button>
+            </LiquidButton>
 
             {submitStatus.type && (
               <div
@@ -278,7 +279,7 @@ export default function Contact() {
           {contactInfo.map((item) => {
             const inner = (
               <>
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
                   <item.icon size={16} />
                 </div>
                 <div className="min-w-0">
