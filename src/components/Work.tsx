@@ -42,7 +42,7 @@ export default function Work() {
               {experience.map((item) => (
                 <div
                   key={`${item.role}-${item.company}`}
-                  className="rounded-2xl border border-border bg-card p-6 shadow-2xl"
+                  className="rounded-2xl border border-border bg-card !px-6 !py-6 shadow-2xl"
                 >
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h4 className="text-lg font-bold">
@@ -90,7 +90,7 @@ export default function Work() {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-5 shadow-2xl transition-all duration-200 hover:-translate-y-1"
+                  className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card !p-5 shadow-2xl transition-all duration-200 hover:-translate-y-1"
                 >
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium">{item.title}</p>
@@ -106,14 +106,14 @@ export default function Work() {
               ))}
             </div>
           </div>
-
-          {/* GitHub contribution chart */}
           <div className="flex flex-col gap-6">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Contribution Activity
             </h3>
 
-            <GithubActivity />
+            <div className="w-full overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-2xl">
+              <GithubActivity />
+            </div>
           </div>
         </div>
       </div>
