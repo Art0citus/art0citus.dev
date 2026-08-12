@@ -17,6 +17,7 @@ interface LiquidButtonProps {
     rel?: string;
     className?: string;
     onClick?: () => void;
+    size?: "default" | "compact";
 }
 
 export default function LiquidButton({
@@ -27,8 +28,10 @@ export default function LiquidButton({
     rel,
     className = "",
     onClick,
+    size = "default",
 }: LiquidButtonProps) {
     const filterId = useId();
+    const isCompact = size === "compact";
     const buttonRef = useRef<HTMLDivElement>(null);
 
     const [origin, setOrigin] = useState({
@@ -55,10 +58,18 @@ export default function LiquidButton({
             whileTap={{ scale: 0.97 }}
             onMouseMove={handleMouseMove}
             onClick={onClick}
-            className={`relative inline-flex min-h-[40px] min-w-[130px] cursor-pointer select-none items-center justify-center isolate ${className}`}
+            className={`relative inline-flex cursor-pointer select-none items-center justify-center isolate ${
+                isCompact
+                    ? "min-h-8 min-w-0"
+                    : "min-h-[40px] min-w-[130px]"
+            } ${className}`}
         >
             {/* Spacer */}
-            <span className="invisible flex items-center gap-3 whitespace-nowrap rounded-full px-12 py-5 text-base font-semibold">
+            <span className={`invisible flex items-center gap-2 whitespace-nowrap rounded-full ${
+                            isCompact
+                                ? "px-3 py-1 text-xs font-normal"
+                                : "px-12 py-5 text-base font-semibold"
+                        }`}>
                 {children}
             </span>
 
@@ -126,7 +137,11 @@ export default function LiquidButton({
             </div>
 
             {/* Label */}
-            <span className="pointer-events-none absolute inset-0 flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-12 py-5 text-base font-semibold text-foreground">
+            <span className={`pointer-events-none absolute inset-0 flex items-center justify-center gap-2 whitespace-nowrap rounded-full ${
+                    isCompact
+                        ? "px-3 py-1 text-xs font-normal"
+                        : "px-12 py-5 text-base font-semibold"
+                } text-foreground`}>
                 {children}
             </span>
         </motion.div>
