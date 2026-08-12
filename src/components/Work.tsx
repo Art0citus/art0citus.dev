@@ -18,14 +18,14 @@ export default function Work() {
     >
       <div className="w-full max-w-4xl">
         <div className="mb-20">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-8">
             <h2 className="font-sans text-5xl whitespace-nowrap">
               Work
             </h2>
             <div className="h-px flex-1 bg-border" />
           </div>
 
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
             Experience, open source contributions, and the code I ship along
             the way.
           </p>
@@ -111,7 +111,7 @@ export default function Work() {
               Contribution Activity
             </h3>
 
-            <div className="w-full overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-2xl">
+            <div className="w-full overflow-hidden rounded-2xl border border-border bg-card !p-5 shadow-2xl">
               <GithubActivity />
             </div>
           </div>
