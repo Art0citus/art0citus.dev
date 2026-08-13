@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import { X, Plus } from "lucide-react";
 import CameraCapture from "./CameraCapture";
 
 const STORY_DURATION = 5000; // ms
-const DEFAULT_STORY = { url: "/images/logo.png", uploadedAt: "" };
+const DEFAULT_STORY = { url: "/images/logo.jpg", uploadedAt: "" };
 
 export default function ProfileStory() {
   const searchParams = useSearchParams();
@@ -21,6 +22,7 @@ export default function ProfileStory() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [cameraOpen, setCameraOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const fetchStories = useCallback(() => {
     fetch("/api/stories", { cache: "no-store" })
@@ -37,6 +39,7 @@ export default function ProfileStory() {
 
   useEffect(() => {
     fetchStories();
+    setMounted(true);
   }, [fetchStories]);
 
   const openViewer = () => {
@@ -101,75 +104,85 @@ export default function ProfileStory() {
         )}
       </div>
 
-      {open && (
-        <div className="fixed inset-0 z-[100] flex flex-col bg-black">
-          {/* Segmented progress bar — one segment per story */}
-          <div className="absolute left-3 right-3 top-3 z-10 flex gap-1.5">
-            {stories.map((s, i) => (
-              <div
-                key={s.url}
-                className="h-1 flex-1 overflow-hidden rounded-full bg-white/30"
-              >
-                {i < index && <div className="h-full w-full bg-white" />}
-                {i === index && (
-                  <div
-                    key={`${s.url}-${open}`}
-                    className="h-full origin-left rounded-full bg-white"
-                    style={{
-                      animation: `story-progress ${STORY_DURATION}ms linear forwards`,
-                    }}
-                  />
-                )}
+      {mounted &&
+        createPortal(
+          <>
+            {open && (<div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 p-4 backdrop-blur-md sm:p-8">
+          <div className="relative h-[90vh] w-[min(90vw,520px)] max-w-[520px] overflow-hidden rounded-3xl bg-black shadow-2xl ring-1 ring-white/10">
+            {/* Segmented progress bar — one segment per story */}
+            <div className="absolute left-4 right-4 top-4 z-20 flex gap-1.5">
+              {stories.map((s, i) => (
+                <div
+                  key={s.url}
+                  className="h-1 flex-1 overflow-hidden rounded-full bg-white/30"
+                >
+                  {i < index && <div className="h-full w-full bg-white" />}
+                  {i === index && (
+                    <div
+                      key={`${s.url}-${open}`}
+                      className="h-full origin-left rounded-full bg-white"
+                      style={{
+                        animation: `story-progress ${STORY_DURATION}ms linear forwards`,
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="absolute left-5 top-10 z-20 flex items-center gap-3">
+              <div className="h-8 w-8 overflow-hidden rounded-full border border-white/50">
+                <Image
+                  src="/images/face1.png"
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="object-cover"
+                />
               </div>
-            ))}
-          </div>
+              <span className="text-sm font-medium text-white">Ritik Mishra</span>
+            </div>
 
-          <div className="absolute left-4 top-8 z-10 flex items-center gap-2">
-            <div className="h-7 w-7 overflow-hidden rounded-full border border-white/50">
+            <button
+              onClick={closeViewer}
+              aria-label="Close story"
+              className="absolute right-5 top-10 z-20 rounded-full p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              <X size={26} />
+            </button>
+
+            {/* Large hero-style story */}
+            <div className="relative h-full w-full bg-black">
               <Image
-                src="/images/face1.png"
-                alt=""
-                width={28}
-                height={28}
-                className="object-cover"
+                src={stories[index].url}
+                alt="Story"
+                fill
+                sizes="(max-width: 768px) 100vw, 1200px"
+                className="object-contain"
               />
-            </div>
-            <span className="text-sm font-medium text-white">Ritik Mishra</span>
-          </div>
 
-          <button
-            onClick={closeViewer}
-            aria-label="Close story"
-            className="absolute right-4 top-8 z-10 text-white/80 transition-colors hover:text-white"
-          >
-            <X size={26} />
-          </button>
+              {/* Subtle readability gradient */}
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/50 to-transparent" />
 
-          {/* Fullscreen story image */}
-          <div className="relative flex-1">
-            <Image
-              src={stories[index].url}
-              alt="Story"
-              fill
-              className="object-contain sm:object-cover"
-            />
-
-            {/* Tap zones: left third = previous, right two-thirds = next */}
-            <div className="absolute inset-0 flex">
-              <button
-                aria-label="Previous story"
-                onClick={goPrev}
-                className="h-full w-1/3"
-              />
-              <button
-                aria-label="Next story"
-                onClick={goNext}
-                className="h-full w-2/3"
-              />
+              {/* Tap zones */}
+              <div className="absolute inset-0 flex">
+                <button
+                  aria-label="Previous story"
+                  onClick={goPrev}
+                  className="h-full w-1/3"
+                />
+                <button
+                  aria-label="Next story"
+                  onClick={goNext}
+                  className="h-full w-2/3"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        </div>            )}
+          </>,
+          document.body
+        )}
 
       {cameraOpen && adminKey && (
         <CameraCapture
