@@ -98,11 +98,11 @@ export default function TechStack() {
                     </h2>
                     <div className="h-px flex-1 bg-border" />
                 </div>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-6 text-lg text-muted-foreground">
                     Technologies I use in building.
                 </p>
 
-                <div className="mt-16 flex flex-col gap-14">
+                <div className="mt-20 flex flex-col gap-16">
                     {categories.map((cat) => (
                         <div
                             key={cat.label}
