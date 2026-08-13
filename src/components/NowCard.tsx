@@ -48,14 +48,16 @@ export default function NowCard() {
     : "";
 
   return (
-    <div ref={containerRef} className="relative shrink-0 px-3">
+ <div ref={containerRef} className="relative shrink-0">
   <LiquidButton
-        onClick={() => setOpen((prev) => !prev)}
-        size="compact"
-        className="!h-8"
-      >
-        {timeLabel}
-      </LiquidButton>
+    onClick={() => setOpen((prev) => !prev)}
+    size="compact"
+    className="!h-7 !min-h-7 !px-3"
+  >
+    <span className="text-xs font-medium">
+      {timeLabel}
+    </span>
+  </LiquidButton>
       {open && (
         <div className="absolute left-0 top-12 z-[60] w-72 overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
           {/* Greeting */}
