@@ -93,7 +93,7 @@ function FormField({
       >
         <Icon
           size={16}
-          className={`shrink-0 text-muted-foreground transition-all duration-200 group-focus-within:scale-110 group-focus-within:text-foreground ${
+          className={`shrink-0 text-muted-foreground transition-colors duration-200 group-focus-within:text-foreground ${
             rows ? "mt-0.5" : ""
           }`}
         />
@@ -169,31 +169,28 @@ export default function Contact() {
 
       <div className="relative z-10 flex w-full max-w-2xl flex-col gap-10">
         <div
-  className="mx-auto w-full max-w-2xl text-center animate-[rise-in_0.5s_ease-out_backwards]"
-  style={{ animationDelay: "0ms" }}
->
-  <h2 className="font-pixelta text-5xl">
-    Let&apos;s Connect
-  </h2>
-
-  <p className="mx-auto mt-4 max-w-md text-lg text-muted-foreground">
-    Got an idea or project? I&apos;d love to hear about it and explore
-    how we can work together.
-  </p>
-</div>
+          className="animate-[rise-in_0.5s_ease-out_backwards] text-center"
+          style={{ animationDelay: "0ms" }}
+        >
+          <h2 className="text-5xl">Let&apos;s Connect</h2>
+          <p className="mx-auto mt-4 max-w-md text-lg text-muted-foreground">
+            Got an idea or project? I&apos;d love to hear about it and explore
+            how we can work together.
+          </p>
+        </div>
 
         {/* Form */}
         <div
           className="animate-[rise-in_0.5s_ease-out_backwards] rounded-3xl border border-border bg-card !p-8 shadow-2xl transition-shadow duration-300 hover:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15)] sm:!p-10"
           style={{ animationDelay: "80ms" }}
         >
-          <div className="group mb-8 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl">
-              <MessageSquareIcon size={18} />
+          <div className="group mb-9 flex items-center gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-background p-2">
+              <MessageSquareIcon size={17} />
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">
-              Let&apos;s Connect
+                Contact form
               </p>
               <h3 className="text-lg font-bold">Send a message</h3>
             </div>
@@ -232,7 +229,8 @@ export default function Contact() {
               placeholder="What's on your mind?"
             />
 
-            <LiquidButton
+            <div className="pt-2">
+              <LiquidButton
               type="submit"
               disabled={isLoading}
               size="compact"
@@ -249,7 +247,8 @@ export default function Contact() {
                   <SendIcon size={16} />
                 </>
               )}
-            </LiquidButton>
+              </LiquidButton>
+            </div>
 
             {submitStatus.type && (
               <div
