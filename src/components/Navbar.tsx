@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -70,9 +70,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 flex w-full justify-center px-4 transition-transform duration-300 ${
-        showNavbar ? "translate-y-0" : "-translate-y-20"
-      }`}
+      className={`sticky top-0 z-50 flex w-full justify-center px-4 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-20"
+        }`}
     >
       <nav className="flex h-16 w-full max-w-4xl items-center justify-between bg-white px-6 transition-colors dark:bg-background">
         {/* Left: pill + nav links */}
@@ -88,7 +87,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/#projects"
+              href="/#work"
               className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
             >
               Work
@@ -119,7 +118,7 @@ export default function Navbar() {
         >
           <Switch
             isChecked={resolvedTheme === "dark"}
-            onChange={() => {}}
+            onChange={() => { }}
           />
         </div>
       </nav>
