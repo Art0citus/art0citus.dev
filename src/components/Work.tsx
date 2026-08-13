@@ -17,7 +17,7 @@ export default function Work() {
       className="flex justify-center bg-background px-4 py-32"
     >
       <div className="w-full max-w-4xl">
-        <div className="mb-20">
+        <div className="mb-24">
           <div className="flex items-center gap-8">
             <h2 className="font-sans text-5xl whitespace-nowrap">
               Work
@@ -31,9 +31,9 @@ export default function Work() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-24">
           {/* Experience */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Experience
             </h3>
@@ -78,7 +78,7 @@ export default function Work() {
           </div>
 
           {/* Open Source */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Open Source
             </h3>
@@ -106,7 +106,7 @@ export default function Work() {
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Contribution Activity
             </h3>
