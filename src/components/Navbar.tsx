@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -70,7 +70,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 flex w-full justify-center px-4 transition-transform duration-300 ${
+      className={`sticky top-0 z-50 flex w-full justify-center px-4 transition-transform duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-20"
       }`}
     >
