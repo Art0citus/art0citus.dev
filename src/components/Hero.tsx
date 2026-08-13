@@ -27,7 +27,7 @@ export default function Hero() {
             <div className="relative h-[680px] w-full max-w-4xl">
 
                 {/* Banner */}
-                <div className="relative mt-24 h-[420px] overflow-hidden rounded-3xl">
+                <div className="relative mt-24 h-[420px] overflow-hidden rounded-7xl">
                     <Image
                         src="/gifs/mario.gif"
                         alt="Hero Banner"
