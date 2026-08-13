@@ -74,11 +74,10 @@ function FormField({
         </label>
         {maxLength && (
           <span
-            className={`text-[10px] tabular-nums transition-colors duration-200 ${
-              value.length > maxLength * 0.9
-                ? "text-amber-500"
-                : "text-muted-foreground"
-            }`}
+            className={`text-[10px] tabular-nums transition-colors duration-200 ${value.length > maxLength * 0.9
+              ? "text-amber-500"
+              : "text-muted-foreground"
+              }`}
           >
             {value.length}/{maxLength}
           </span>
@@ -87,16 +86,18 @@ function FormField({
 
       {/* Icon and input are normal flex siblings — never overlap, regardless of content length */}
       <div
-        className={`w-full min-w-0 flex gap-3 rounded-xl border border-border bg-background px-4 py-3 shadow-sm transition-all duration-200 focus-within:-translate-y-0.5 focus-within:border-foreground/40 focus-within:shadow-md focus-within:ring-4 focus-within:ring-foreground/[0.04] ${
-          rows ? "items-start" : "items-center"
-        }`}
-      >
-        <Icon
-          size={16}
-          className={`shrink-0 text-muted-foreground transition-colors duration-200 group-focus-within:text-foreground ${
-            rows ? "mt-0.5" : ""
+        className={`w-full min-w-0 flex gap-4 rounded-xl border border-border bg-background px-5 py-4 shadow-sm transition-all duration-200 focus-within:-translate-y-0.5 focus-within:border-foreground/40 focus-within:shadow-md focus-within:ring-4 focus-within:ring-foreground/[0.04] ${rows ? "items-start" : "items-center"
           }`}
-        />
+      >
+        <span
+          className={`flex h-7 w-7 shrink-0 items-center justify-center ${rows ? "mt-0.5" : ""
+            }`}
+        >
+          <Icon
+            size={16}
+            className="text-muted-foreground transition-colors duration-200 group-focus-within:text-foreground"
+          />
+        </span>
 
         {rows ? (
           <textarea
@@ -168,12 +169,12 @@ export default function Contact() {
       </div>
 
       <div className="relative z-10 flex w-full max-w-2xl flex-col gap-10">
-        <div
-          className="animate-[rise-in_0.5s_ease-out_backwards] text-center"
-          style={{ animationDelay: "0ms" }}
-        >
-          <h2 className="text-5xl">Let&apos;s Connect</h2>
-          <p className="mx-auto mt-4 max-w-md text-lg text-muted-foreground">
+        <div className="flex w-full flex-col items-center text-center">
+          <h2 className="text-5xl">
+            Let&apos;s Connect
+          </h2>
+
+          <p className="mt-4 w-full max-w-md text-center text-lg text-muted-foreground">
             Got an idea or project? I&apos;d love to hear about it and explore
             how we can work together.
           </p>
@@ -181,23 +182,22 @@ export default function Contact() {
 
         {/* Form */}
         <div
-          className="animate-[rise-in_0.5s_ease-out_backwards] rounded-3xl border border-border bg-card !p-8 shadow-2xl transition-shadow duration-300 hover:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15)] sm:!p-10"
+          className="animate-[rise-in_0.5s_ease-out_backwards] rounded-3xl border border-border bg-card !p-9 shadow-2xl transition-shadow duration-300 hover:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15)] sm:!p-10"
           style={{ animationDelay: "80ms" }}
         >
-          <div className="group mb-9 flex items-center gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-background p-2">
+          <div className="group mb-10 flex items-center gap-4">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center p-2">
               <MessageSquareIcon size={17} />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                Contact form
+              <p className="text-xs uppercase font-bold tracking-widest text-muted-foreground">
+                Send a message
               </p>
-              <h3 className="text-lg font-bold">Send a message</h3>
             </div>
           </div>
 
-          <form className="!w-full !max-w-full min-w-0 space-y-5" onSubmit={handleSubmit}>
-            <div className="grid w-full min-w-0 grid-cols-1 gap-5 sm:grid-cols-2">
+          <form className="!w-full !max-w-full min-w-0 space-y-6" onSubmit={handleSubmit}>
+            <div className="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2">
               <FormField
                 id="name"
                 label="Name"
@@ -218,46 +218,43 @@ export default function Contact() {
               />
             </div>
 
-            <FormField
-              id="message"
-              label="Message"
-              icon={MessageSquareIcon}
-              rows={5}
-              maxLength={MESSAGE_MAX}
-              value={formData.message}
-              onChange={(v) => setFormData({ ...formData, message: v })}
-              placeholder="What's on your mind?"
-            />
+           <FormField
+  id="message"
+  label="Message"
+  icon={MessageSquareIcon}
+  rows={5}
+  maxLength={MESSAGE_MAX}
+  value={formData.message}
+  onChange={(v) => setFormData({ ...formData, message: v })}
+  placeholder="What's on your mind?"
+/>
 
-            <div className="pt-2">
-              <LiquidButton
-              type="submit"
-              disabled={isLoading}
-              size="compact"
-              className="!h-9 !w-full !rounded-full"
-            >
-              {isLoading ? (
-                <>
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-foreground/30 border-t-foreground" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  Send Message
-                  <SendIcon size={16} />
-                </>
-              )}
-              </LiquidButton>
-            </div>
+<div className="flex justify-start pt-8">
+  <LiquidButton
+    type="submit"
+    disabled={isLoading}
+  >
+    {isLoading ? (
+      <>
+        <span className="h-4 w-4 animate-spin rounded-full border-2 border-foreground/30 border-t-foreground" />
+        <span className="text-sm font-medium">Sending...</span>
+      </>
+    ) : (
+      <>
+        <SendIcon size={18} />
+        <span className="text-sm font-medium">Send Message</span>
+      </>
+    )}
+  </LiquidButton>
+</div>
 
             {submitStatus.type && (
               <div
                 key={submitStatus.message}
-                className={`flex animate-[slide-fade-in_0.3s_ease-out] items-center gap-3 rounded-xl p-4 ${
-                  submitStatus.type === "success"
-                    ? "border border-green-500/20 bg-green-500/10 text-green-600 dark:text-green-400"
-                    : "border border-red-500/20 bg-red-500/10 text-red-600 dark:text-red-400"
-                }`}
+                className={`flex animate-[slide-fade-in_0.3s_ease-out] items-center gap-3 rounded-xl p-4 ${submitStatus.type === "success"
+                  ? "border border-green-500/20 bg-green-500/10 text-green-600 dark:text-green-400"
+                  : "border border-red-500/20 bg-red-500/10 text-red-600 dark:text-red-400"
+                  }`}
               >
                 {submitStatus.type === "success" ? (
                   <CheckCircleIcon size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
