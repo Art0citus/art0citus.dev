@@ -191,7 +191,7 @@ export default function Contact() {
             </div>
             <div>
               <p className="text-xs uppercase font-bold tracking-widest text-muted-foreground">
-                Send a message
+                Send a message..
               </p>
             </div>
           </div>
