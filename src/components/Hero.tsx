@@ -114,16 +114,17 @@ export default function Hero() {
                         </a>
                     </div>
 
-
-                    <div className="absolute left-0 top-[395px]">
-                        <p className=" mt-2 text-2xl">
+                    <div className="absolute left-0 top-[395px] flex flex-col gap-4">
+                        <p className="text-2xl">
                             Building software that just works.
                         </p>
-                    </div>
 
-                    <div className="absolute left-0 top-[430px]">
-                        <p className=" mt-6 max-w-2xl text-lg leading-8">
-                            I enjoy turning ideas into fast, scalable web and mobile applications, with a strong focus on backend engineering, clean architecture, and building systems that are reliable, maintainable, and built to grow. Whether it's designing APIs, working with databases, or solving real-world problems, I'm always looking for better ways to build software.
+                        <p className="max-w-2xl text-lg leading-8">
+                            I enjoy turning ideas into fast, scalable web and mobile applications,
+                            with a strong focus on backend engineering, clean architecture, and
+                            building systems that are reliable, maintainable, and built to grow.
+                            Whether it's designing APIs, working with databases, or solving
+                            real-world problems, I'm always looking for better ways to build software.
                         </p>
                     </div>
                     <div className="absolute left-0 top-[600px]">
@@ -159,18 +160,18 @@ export default function Hero() {
                     </div>
                     <div className="absolute left-0 top-[650px]">
                         <LiquidButton
-                            href="/Ritik_Mishra_Resume.pdf"
+                            href="/Ritik_Mishra_Resume.docx"
                             download
                         >
-                                <Image
-                                    src="/icons/download.svg"
-                                    alt="Download"
-                                    width={18}
-                                    height={18}
-                                    className="dark:invert"
-                                />
-                                <span className="text-sm font-medium">Resume</span>
-                            
+                            <Image
+                                src="/icons/download.svg"
+                                alt="Download"
+                                width={18}
+                                height={18}
+                                className="dark:invert"
+                            />
+                            <span className="text-sm font-medium">Resume</span>
+
                         </LiquidButton>
                     </div>
                 </div>
