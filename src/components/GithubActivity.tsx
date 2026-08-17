@@ -6,8 +6,8 @@ import { useTheme } from "next-themes";
 const GITHUB_USERNAME = "Art0citus";
 
 const calendarTheme = {
-  dark: ["#282a36", "#3b82f6", "#a855f7", "#ec4899", "#facc15"],
-  light: ["#eceef5", "#60a5fa", "#c084fc", "#f472b6", "#fbbf24"],
+  dark: ["#0f172a", "#1d4ed8", "#2563eb", "#3b82f6", "#60a5fa"],
+  light: ["#eff6ff", "#bfdbfe", "#93c5fd", "#60a5fa", "#3b82f6"],
 };
 
 export default function GithubActivity() {
