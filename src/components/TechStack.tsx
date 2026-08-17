@@ -3,6 +3,11 @@
 import { useRef, useState } from "react";
 import StackIcon from "tech-stack-icons";
 import { Monitor, Server, Database, Wrench, Volume2, VolumeX } from "lucide-react";
+import {
+    SiJavascript,
+    SiExpress,
+    SiFastapi,
+} from "react-icons/si";
 
 const displayNames: Record<string, string> = {
     nextjs: "Next.js",
@@ -25,6 +30,12 @@ const displayNames: Record<string, string> = {
     git: "Git",
     github: "GitHub",
     linux: "Linux",
+};
+
+const fallbackIcons: Record<string, React.ElementType> = {
+    javascript: SiJavascript,
+    express: SiExpress,
+    fastapi: SiFastapi,
 };
 
 const categories = [
@@ -91,7 +102,7 @@ export default function TechStack() {
             id="tech"
             className="flex justify-center bg-background px-4 py-32"
         >
-            <div className="w-full max-w-4xl">
+            <div className="w-full max-w-4xl flex flex-col gap-4">
                 <div className="flex items-center gap-8">
                     <h2 className="font-sans text-5xl whitespace-nowrap">
                         Stack
@@ -122,11 +133,18 @@ export default function TechStack() {
                                         onMouseEnter={playHoverSound}
                                         className="group flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-xs font-medium uppercase tracking-wide transition-all duration-200 "
                                     >
-                                        <span className="h-4 w-4 shrink-0">
-                                            <StackIcon
-                                                name={item}
-                                                className="h-full w-full"
-                                            />
+                                        <span className="flex h-4 w-4 shrink-0 items-center justify-center">
+                                            {fallbackIcons[item] ? (
+                                                (() => {
+                                                    const Icon = fallbackIcons[item];
+                                                    return <Icon className="h-full w-full" />;
+                                                })()
+                                            ) : (
+                                                <StackIcon
+                                                    name={item}
+                                                    className="h-full w-full"
+                                                />
+                                            )}
                                         </span>
                                         {displayNames[item] ?? item}
                                     </span>
