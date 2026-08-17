@@ -10,9 +10,8 @@ import {
   MailIcon,
   UserIcon,
   MessageSquareIcon,
-  CheckCircleIcon,
-  AlertCircleIcon,
 } from "@animateicons/react/lucide";
+import { CheckCircle, CircleAlert } from "lucide-react";
 
 const contactInfo = [
   {
@@ -218,35 +217,35 @@ export default function Contact() {
               />
             </div>
 
-           <FormField
-  id="message"
-  label="Message"
-  icon={MessageSquareIcon}
-  rows={5}
-  maxLength={MESSAGE_MAX}
-  value={formData.message}
-  onChange={(v) => setFormData({ ...formData, message: v })}
-  placeholder="What's on your mind?"
-/>
+            <FormField
+              id="message"
+              label="Message"
+              icon={MessageSquareIcon}
+              rows={5}
+              maxLength={MESSAGE_MAX}
+              value={formData.message}
+              onChange={(v) => setFormData({ ...formData, message: v })}
+              placeholder="What's on your mind?"
+            />
 
-<div className="flex justify-start pt-8">
-  <LiquidButton
-    type="submit"
-    disabled={isLoading}
-  >
-    {isLoading ? (
-      <>
-        <span className="h-4 w-4 animate-spin rounded-full border-2 border-foreground/30 border-t-foreground" />
-        <span className="text-sm font-medium">Sending...</span>
-      </>
-    ) : (
-      <>
-        <SendIcon size={18} />
-        <span className="text-sm font-medium">Send Message</span>
-      </>
-    )}
-  </LiquidButton>
-</div>
+            <div className="flex justify-start pt-8">
+              <LiquidButton
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-foreground/30 border-t-foreground" />
+                    <span className="text-sm font-medium">Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <SendIcon size={18} />
+                    <span className="text-sm font-medium">Send Message</span>
+                  </>
+                )}
+              </LiquidButton>
+            </div>
 
             {submitStatus.type && (
               <div
@@ -257,9 +256,9 @@ export default function Contact() {
                   }`}
               >
                 {submitStatus.type === "success" ? (
-                  <CheckCircleIcon size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
+                  <CheckCircle size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
                 ) : (
-                  <AlertCircleIcon size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
+                  <CircleAlert size={18} className="shrink-0 animate-[pop-in_0.4s_ease-out]" />
                 )}
                 <p className="text-sm">{submitStatus.message}</p>
               </div>
@@ -304,15 +303,18 @@ export default function Contact() {
           })}
         </div>
 
-        {/* Availability banner */}
+               {/* Availability banner */}
         <div
           className="flex animate-[rise-in_0.5s_ease-out_backwards] items-center gap-9 rounded-2xl border border-border bg-card p-9 shadow-2xl transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 dark:hover:border-neutral-700"
           style={{ animationDelay: "240ms" }}
         >
-          <span className="relative flex h-3 w-3 shrink-0">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-            <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
+          <span className="flex h-6 w-6 shrink-0 items-center justify-center">
+            <span className="relative flex h-3 w-3">
+              <span className="absolute inset-0 animate-ping rounded-full bg-green-500 opacity-75" />
+              <span className="relative h-3 w-3 rounded-full bg-green-500" />
+            </span>
           </span>
+
           <div>
             <p className="text-sm font-medium">Currently Available</p>
             <p className="mt-0.5 text-xs text-muted-foreground">
@@ -328,34 +330,41 @@ export default function Contact() {
             opacity: 0;
             transform: translateY(-6px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
+
         @keyframes rise-in {
           from {
             opacity: 0;
             transform: translateY(16px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
+
         @keyframes pop-in {
           0% {
             transform: scale(0.5);
             opacity: 0;
           }
+
           70% {
             transform: scale(1.1);
           }
+
           100% {
             transform: scale(1);
             opacity: 1;
           }
         }
+
         @media (prefers-reduced-motion: reduce) {
           [style*="rise-in"],
           [class*="animate-"] {
