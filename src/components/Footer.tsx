@@ -12,7 +12,7 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer className="w-full bg-background">
+        <footer className="mt-[200px] w-full bg-background">
             {/* Top divider — now spans the full viewport width */}
             <div className="h-px w-full bg-neutral-200 dark:bg-neutral-800" />
 
@@ -23,7 +23,7 @@ export default function Footer() {
                         href="/"
                         className="text-lg font-semibold tracking-tight text-neutral-900 transition-colors hover:text-neutral-600 dark:text-neutral-100 dark:hover:text-neutral-400"
                     >
-                        Art0<span className="text-#6DD8F8">citus</span>
+                        Art0<span className="text-[#6DD8F8]">citus</span>
                     </Link>
 
                     {/* Socials — flat icons, no cards/shadows */}
