@@ -18,10 +18,10 @@ const quotes = [
 export default function MotivationalQuote() {
   // Start with a fixed quote so server and client render identically on
   // the first pass, then swap to a random one after mount (client-only).
-  const [quote, setQuote] = useState(quotes[0]);
+  const [quote, setQuote] = useState<typeof quotes[0] | null>(() => quotes[Math.floor(Math.random() * quotes.length)]);
 
   useEffect(() => {
-    setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    // Quote is initialized via useState initializer function
   }, []);
 
   const spidyAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -51,7 +51,7 @@ export default function MotivationalQuote() {
   };
 
   return (
-    <section className="flex justify-center bg-background px-4 py-32">
+    <section className="flex justify-center bg-background px-4 pb-40 pt-32">
       <div className="w-full max-w-4xl">
         <div
           className="relative overflow-hidden rounded-3xl bg-[#6DD8F8] p-10 text-center shadow-2xl sm:p-14"
