@@ -14,6 +14,8 @@ interface LiquidButtonProps {
     href?: string;
     download?: boolean;
     target?: "_blank" | "_self" | "_parent" | "_top";
+    type?: "button" | "submit" | "reset";
+    disabled?: boolean;
     rel?: string;
     className?: string;
     onClick?: () => void;
