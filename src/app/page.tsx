@@ -21,6 +21,8 @@ export default function Home() {
         <MotivationalQuote />
       </main>
 
+      <div className="h-24" />
+
       <Footer />
     </div>
   );
