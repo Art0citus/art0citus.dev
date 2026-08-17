@@ -5,9 +5,12 @@ import { openSourceContributions, type PRStatus } from "@/data/openSource";
 import GithubActivity from "./GithubActivity";
 
 const statusStyles: Record<PRStatus, string> = {
-  merged: "border-purple-500/20 bg-purple-500/10 text-purple-600 dark:text-purple-400",
-  open: "border-green-500/20 bg-green-500/10 text-green-600 dark:text-green-400",
-  closed: "border-red-500/20 bg-red-500/10 text-red-600 dark:text-red-400",
+  merged:
+    "border-purple-500/30 bg-purple-500/10 text-purple-600 dark:text-purple-400",
+  open:
+    "border-green-500/30 bg-green-500/10 text-green-600 dark:text-green-400",
+  closed:
+    "border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400",
 };
 
 export default function Work() {
@@ -16,8 +19,8 @@ export default function Work() {
       id="work"
       className="flex justify-center bg-background px-4 py-32"
     >
-      <div className="w-full max-w-4xl">
-        <div className="mb-24">
+      <div className="w-full max-w-4xl flex flex-col gap-4">
+        <div className="mb-24 flex flex-col gap-4">
           <div className="flex items-center gap-8">
             <h2 className="font-sans text-5xl whitespace-nowrap">
               Work
@@ -98,7 +101,7 @@ export default function Work() {
                   </div>
 
                   <span
-                    className={`shrink-0 rounded-full border px-3 py-1 text-xs font-medium capitalize ${statusStyles[item.status]}`}
+                    className={`inline-flex h-6 shrink-0 items-center justify-center rounded-full border px-4 text-xs font-medium capitalize leading-none ${statusStyles[item.status]}`}
                   >
                     {item.status}
                   </span>
