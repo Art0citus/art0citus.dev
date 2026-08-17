@@ -58,7 +58,7 @@ export default function LoadingScreen({
       audioRef.current?.pause();
       audioRef.current = null;
     };
-  }, []);
+  }, [onComplete]);
   const toggleSound = () => {
     if (!audioRef.current) return;
 
