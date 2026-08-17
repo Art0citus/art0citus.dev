@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
+import { Suspense } from "react";
 import ProfileStory from "./ProfileStory";
 import LiquidButton from "@/components/ui/LiquidButton";
 import { MapPinIcon } from "@animateicons/react/lucide";
@@ -39,7 +39,9 @@ export default function Hero() {
 
                 {/* Profile Picture */}
                 <div className="absolute left-8 top-14 z-20 translate-y-1/2">
-                    <ProfileStory />
+                    <Suspense fallback={null}>
+                        <ProfileStory />
+                    </Suspense>
                 </div>
 
                 {/* Hero Information */}
@@ -123,8 +125,8 @@ export default function Hero() {
                             I enjoy turning ideas into fast, scalable web and mobile applications,
                             with a strong focus on backend engineering, clean architecture, and
                             building systems that are reliable, maintainable, and built to grow.
-                            Whether it's designing APIs, working with databases, or solving
-                            real-world problems, I'm always looking for better ways to build software.
+                            Whether it&apos;s designing APIs, working with databases, or solving
+                            real-world problems, I&apos;m always looking for better ways to build software.
                         </p>
                     </div>
                     <div className="absolute left-0 top-[600px]">
