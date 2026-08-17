@@ -70,11 +70,11 @@ export default function MotivationalQuote() {
               <div
                 key={q.text}
                 className={`col-start-1 row-start-1 flex flex-col items-center justify-center transition-opacity duration-300 ${
-                  q.text === quote.text
+                  q.text === quote?.text
                     ? "opacity-100"
                     : "pointer-events-none opacity-0"
                 }`}
-                aria-hidden={q.text !== quote.text}
+                aria-hidden={q.text !== quote?.text}
               >
                 <p className="text-2xl font-medium italic leading-relaxed text-slate-900 sm:text-3xl">
                   &ldquo;{q.text}&rdquo;
