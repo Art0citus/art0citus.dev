@@ -52,7 +52,7 @@ export default function FunFacts() {
       className="flex justify-center bg-background px-4 pt-32 pb-48"
     >
       <div className="flex w-full max-w-4xl flex-col items-start gap-12">
-        <div className="w-full">
+        <div className="w-full flex flex-col gap-4">
   <div className="flex items-center gap-4">
     <h2 className="font-sans text-5xl whitespace-nowrap">
       Personal
