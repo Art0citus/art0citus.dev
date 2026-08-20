@@ -100,38 +100,43 @@ export default function TechStack() {
     return (
         <section
             id="tech"
-            className="flex justify-center bg-background px-4 py-32"
+            className="flex justify-center bg-background px-4 py-20 sm:py-32"
         >
-            <div className="w-full max-w-4xl flex flex-col gap-4">
-                <div className="flex items-center gap-8">
-                    <h2 className="font-sans text-5xl whitespace-nowrap">
+            <div className="flex w-full max-w-4xl flex-col gap-4">
+                <div className="flex items-center gap-4 sm:gap-8">
+                    <h2 className="whitespace-nowrap font-sans text-3xl sm:text-5xl">
                         Stack
                     </h2>
                     <div className="h-px flex-1 bg-border" />
                 </div>
-                <p className="mt-6 text-lg text-muted-foreground">
+
+                <p className="mt-4 text-base text-muted-foreground sm:mt-6 sm:text-lg">
                     Technologies I use in building.
                 </p>
 
-                <div className="mt-20 flex flex-col gap-16">
+                <div className="mt-12 flex flex-col gap-10 sm:mt-20 sm:gap-16">
                     {categories.map((cat) => (
                         <div
                             key={cat.label}
-                            className="grid grid-cols-1 gap-4 sm:grid-cols-[220px_1fr] sm:items-start"
+                            className="grid grid-cols-[120px_1fr] items-start gap-3 sm:grid-cols-[220px_1fr] sm:gap-4"
                         >
                             <div className="flex items-center gap-2">
-                                <cat.icon size={16} className="text-muted-foreground" />
-                                <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                                <cat.icon
+                                    size={16}
+                                    className="shrink-0 text-muted-foreground"
+                                />
+
+                                <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-sm">
                                     {cat.label}
                                 </span>
                             </div>
 
-                            <div className="flex flex-wrap gap-2.5">
+                            <div className="flex flex-wrap gap-2 sm:gap-2.5">
                                 {cat.items.map((item) => (
                                     <span
                                         key={item}
                                         onMouseEnter={playHoverSound}
-                                        className="group flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-xs font-medium uppercase tracking-wide transition-all duration-200 "
+                                        className="group flex items-center gap-1.5 rounded-full bg-card px-2.5 py-1.5 text-[10px] font-medium uppercase tracking-wide transition-all duration-200 sm:gap-2 sm:px-3 sm:text-xs"
                                     >
                                         <span className="flex h-4 w-4 shrink-0 items-center justify-center">
                                             {fallbackIcons[item] ? (
@@ -146,6 +151,7 @@ export default function TechStack() {
                                                 />
                                             )}
                                         </span>
+
                                         {displayNames[item] ?? item}
                                     </span>
                                 ))}
