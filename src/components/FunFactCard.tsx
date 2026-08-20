@@ -13,16 +13,21 @@ export default function FunFactCard({ image, title, subtitle }: FunFactCardProps
         src={image}
         alt={title}
         fill
-        className="pointer-events-none object-cover [-webkit-user-drag:none] select-none"
-        sizes="256px"
+        className="pointer-events-none select-none object-cover [-webkit-user-drag:none]"
+        sizes="(max-width: 640px) 50vw, 256px"
         draggable={false}
         onDragStart={(e) => e.preventDefault()}
       />
 
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-10">
-        <h3 className="text-sm font-bold text-white">{title}</h3>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-2.5 pt-8 sm:p-4 sm:pt-10">
+        <h3 className="text-xs font-bold text-white sm:text-sm">
+          {title}
+        </h3>
+
         {subtitle && (
-          <p className="mt-0.5 text-xs text-white/70">{subtitle}</p>
+          <p className="mt-0.5 text-[10px] leading-4 text-white/70 sm:text-xs">
+            {subtitle}
+          </p>
         )}
       </div>
     </div>
