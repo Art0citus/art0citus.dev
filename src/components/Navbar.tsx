@@ -76,40 +76,41 @@ export default function Navbar() {
         }`}
     >
       <nav className="relative flex h-16 w-full max-w-4xl items-center justify-between bg-white px-4 transition-colors sm:px-6 dark:bg-background">
-        {/* Left: pill */}
-        <NowCard />
+        {/* Left side: pill + desktop navigation */}
+        <div className="flex items-center gap-8">
+          <NowCard />
 
-        {/* Desktop navigation */}
-        <div className="hidden items-center gap-6 md:flex">
-          <Link
-            href="/"
-            className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
-          >
-            Home
-          </Link>
+          {/* Desktop navigation */}
+          <div className="hidden items-center gap-6 md:flex">
+            <Link
+              href="/"
+              className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
+            >
+              Home
+            </Link>
 
-          <Link
-            href="/#work"
-            className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
-          >
-            Work
-          </Link>
+            <Link
+              href="/#work"
+              className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
+            >
+              Work
+            </Link>
 
-          <Link
-            href="/blog"
-            className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
-          >
-            Blog
-          </Link>
+            <Link
+              href="/blog"
+              className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
+            >
+              Blog
+            </Link>
 
-          <Link
-            href="/contact"
-            className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
-          >
-            Contact
-          </Link>
+            <Link
+              href="/contact"
+              className="text-sm text-neutral-500 transition hover:text-black dark:text-neutral-400 dark:hover:text-white"
+            >
+              Contact
+            </Link>
+          </div>
         </div>
-
         {/* Right side */}
         <div className="flex items-center gap-3">
           {/* Mobile hamburger */}
