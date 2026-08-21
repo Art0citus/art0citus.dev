@@ -51,10 +51,10 @@ export default function MotivationalQuote() {
   };
 
   return (
-    <section className="flex justify-center bg-background px-4 pb-40 pt-32">
+    <section className="flex justify-center bg-background px-5 pb-32 pt-20 sm:px-4 sm:pb-40 sm:pt-32">
       <div className="w-full max-w-4xl">
         <div
-          className="relative overflow-hidden rounded-3xl bg-[#6DD8F8] p-10 text-center shadow-2xl sm:p-14"
+          className="relative w-full overflow-hidden rounded-3xl bg-[#6DD8F8] p-6 text-center shadow-2xl sm:p-14"
           onMouseEnter={playSpidySound}
           onMouseLeave={stopSpidySound}
         >
@@ -69,11 +69,10 @@ export default function MotivationalQuote() {
             {quotes.map((q) => (
               <div
                 key={q.text}
-                className={`col-start-1 row-start-1 flex flex-col items-center justify-center transition-opacity duration-300 ${
-                  q.text === quote?.text
+                className={`col-start-1 row-start-1 flex flex-col items-center justify-center transition-opacity duration-300 ${q.text === quote?.text
                     ? "opacity-100"
                     : "pointer-events-none opacity-0"
-                }`}
+                  }`}
                 aria-hidden={q.text !== quote?.text}
               >
                 <p className="text-2xl font-medium italic leading-relaxed text-slate-900 sm:text-3xl">
