@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const [expanded, setExpanded] = useState(false);
+
   const link =
     project.demo && project.demo !== "#" ? project.demo : project.github;
 
@@ -50,15 +53,35 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       {/* Description */}
       <div>
-        <p className="text-sm leading-6 text-muted-foreground">
+        <p
+          className={`text-sm leading-6 text-muted-foreground ${
+            expanded ? "" : "line-clamp-3"
+          }`}
+        >
           {project.description}
         </p>
+
+        {project.description.length > 15 && (
+          <button
+            type="button"
+            onClick={() => setExpanded((prev) => !prev)}
+            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-foreground transition-colors hover:text-muted-foreground"
+          >
+            {expanded ? "Show less" : "Read more"}
+
+            {expanded ? (
+              <ChevronUp size={14} />
+            ) : (
+              <ChevronDown size={14} />
+            )}
+          </button>
+        )}
 
         <div className="mt-3 flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
             <span
               key={tech}
-             className="inline-flex h-5 items-center rounded-full bg-accent px-4 text-[11px] font-medium leading-none"
+              className="inline-flex h-5 items-center rounded-full bg-accent px-4 text-[11px] font-medium leading-none"
             >
               {tech}
             </span>
