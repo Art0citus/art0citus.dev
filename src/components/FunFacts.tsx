@@ -53,26 +53,28 @@ export default function FunFacts() {
     >
       <div className="flex w-full max-w-4xl flex-col items-start gap-12">
         <div className="w-full flex flex-col gap-4">
-  <div className="flex items-center gap-4">
-    <h2 className="font-sans text-5xl whitespace-nowrap">
-      Personal
-    </h2>
-    <div className="h-px flex-1 bg-border" />
-  </div>
+          <div className="flex items-center gap-4">
+            <h2 className="font-sans text-5xl whitespace-nowrap">
+              Personal
+            </h2>
+            <div className="h-px flex-1 bg-border" />
+          </div>
 
-  <p className="mt-4 text-lg text-muted-foreground">
-    A few things I love outside of code.
-  </p>
-</div>
+          <p className="mt-4 text-lg text-muted-foreground">
+            A few things I love outside of code.
+          </p>
+        </div>
 
-        <div className="flex w-full flex-col items-center gap-16 sm:flex-row sm:items-start sm:justify-center sm:gap-24">
+        <div className="grid w-full grid-cols-2 items-start justify-items-center gap-6 sm:flex sm:justify-center sm:gap-24">
+
           {/* Books */}
-          <div className="flex flex-col items-center gap-5">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <div className="flex w-full flex-col items-center gap-4">
+            <h3 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-xs">
               Books
             </h3>
+
             <div
-              className="h-72 w-64 shrink-0"
+              className="h-56 w-full max-w-[160px] shrink-0 sm:h-72 sm:w-64 sm:max-w-none"
               onPointerUp={playFlipSound}
             >
               <Stack
@@ -87,12 +89,13 @@ export default function FunFacts() {
           </div>
 
           {/* Movies */}
-          <div className="flex flex-col items-center gap-5">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <div className="flex w-full flex-col items-center gap-4">
+            <h3 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-xs">
               Movies
             </h3>
+
             <div
-              className="h-72 w-64 shrink-0"
+              className="h-56 w-full max-w-[160px] shrink-0 sm:h-72 sm:w-64 sm:max-w-none"
               onPointerUp={playFlipSound}
             >
               <Stack
@@ -105,6 +108,7 @@ export default function FunFacts() {
               />
             </div>
           </div>
+
         </div>
       </div>
     </section>
