@@ -17,7 +17,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="flex justify-center bg-background px-4 py-20 sm:py-24 md:py-32"
+      className="flex justify-center bg-background px-5 py-20 sm:px-4 sm:py-24 md:py-32"
     >
       <div className="flex w-full max-w-4xl flex-col gap-4">
         <div className="mb-14 flex flex-col gap-3 sm:mb-20 md:mb-24 md:gap-4">
@@ -25,6 +25,7 @@ export default function Work() {
             <h2 className="whitespace-nowrap font-sans text-3xl sm:text-4xl md:text-5xl">
               Work
             </h2>
+
             <div className="h-px flex-1 bg-border" />
           </div>
 
@@ -48,15 +49,16 @@ export default function Work() {
                   key={`${item.role}-${item.company}`}
                   className="rounded-xl border border-border bg-card px-4 py-4 shadow-2xl sm:rounded-2xl sm:px-5 sm:py-5 md:px-6 md:py-6"
                 >
-                  <div className="flex flex-wrap items-baseline justify-between gap-1.5 sm:gap-2">
-                    <h4 className="text-sm font-bold sm:text-base md:text-lg">
+                  {/* Mobile: stack role/date */}
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                    <h4 className="min-w-0 text-sm font-bold sm:text-base md:text-lg">
                       {item.role}{" "}
                       <span className="text-muted-foreground">
                         · {item.company}
                       </span>
                     </h4>
 
-                    <span className="text-[10px] text-muted-foreground sm:text-xs md:text-sm">
+                    <span className="shrink-0 text-[10px] text-muted-foreground sm:text-xs md:text-sm">
                       {item.duration}
                     </span>
                   </div>
@@ -95,9 +97,9 @@ export default function Work() {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 shadow-2xl transition-all duration-200 hover:-translate-y-1 sm:rounded-2xl sm:p-5"
+                  className="flex min-w-0 items-center justify-between gap-2 rounded-xl border border-border bg-card p-4 shadow-2xl transition-all duration-200 hover:-translate-y-1 sm:gap-3 sm:rounded-2xl sm:p-5"
                 >
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="truncate text-xs font-medium sm:text-sm">
                       {item.title}
                     </p>
@@ -108,7 +110,7 @@ export default function Work() {
                   </div>
 
                   <span
-                    className={`inline-flex h-5 shrink-0 items-center justify-center rounded-full border px-2.5 text-[10px] font-medium capitalize leading-none sm:h-6 sm:px-3 sm:text-xs ${statusStyles[item.status]}`}
+                    className={`inline-flex h-5 shrink-0 items-center justify-center rounded-full border px-2 text-[9px] font-medium capitalize leading-none sm:h-6 sm:px-3 sm:text-xs ${statusStyles[item.status]}`}
                   >
                     {item.status}
                   </span>
@@ -123,7 +125,7 @@ export default function Work() {
               Contribution Activity
             </h3>
 
-            <div className="w-full overflow-hidden rounded-xl border border-border bg-card p-3 shadow-2xl sm:rounded-2xl sm:p-4 md:p-5">
+            <div className="w-full overflow-x-auto overflow-y-hidden rounded-xl border border-border bg-card p-3 shadow-2xl sm:overflow-hidden sm:rounded-2xl sm:p-4 md:p-5">
               <GithubActivity />
             </div>
           </div>
