@@ -121,7 +121,7 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    <div className="absolute left-0 top-[395px] flex flex-col gap-3 sm:top-[395px]">
+                    <div className="absolute left-0 right-0 top-[395px] flex flex-col gap-3 px-5 sm:top-[395px] sm:px-0">
                         <p className="text-lg sm:text-xl md:text-2xl">
                             Building software that just works.
                         </p>
