@@ -15,16 +15,16 @@ const statusStyles: Record<PRStatus, string> = {
 
 export default function Work() {
   return (
-    <section
-      id="work"
-      className="flex justify-center bg-background px-5 py-20 sm:px-4 sm:py-24 md:py-32"
-    >
-      <div className="flex w-full max-w-4xl flex-col gap-4">
-        <div className="mb-14 flex flex-col gap-3 sm:mb-20 md:mb-24 md:gap-4">
-          <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
-            <h2 className="whitespace-nowrap font-sans text-3xl sm:text-4xl md:text-5xl">
-              Work
-            </h2>
+  <section
+  id="work"
+  className="flex w-full justify-center bg-background px-5 py-20 sm:px-4 sm:py-24 md:py-32"
+>
+  <div className="flex w-full min-w-0 max-w-4xl flex-col gap-4">
+    <div className="mb-14 flex min-w-0 flex-col gap-3 sm:mb-20 md:mb-24 md:gap-4">
+      <div className="flex min-w-0 items-center gap-4 sm:gap-6 md:gap-8">
+        <h2 className="shrink-0 whitespace-nowrap font-sans text-3xl sm:text-4xl md:text-5xl">
+          Work
+        </h2>
 
             <div className="h-px flex-1 bg-border" />
           </div>
@@ -47,11 +47,11 @@ export default function Work() {
               {experience.map((item) => (
                 <div
                   key={`${item.role}-${item.company}`}
-                  className="rounded-xl border border-border bg-card px-4 py-4 shadow-2xl sm:rounded-2xl sm:px-5 sm:py-5 md:px-6 md:py-6"
+                  className="w-full min-w-0 rounded-xl border border-border bg-card px-5 py-5 shadow-2xl sm:rounded-2xl sm:px-5 sm:py-5 md:px-6 md:py-6"
                 >
-                  {/* Mobile: stack role/date */}
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
-                    <h4 className="min-w-0 text-sm font-bold sm:text-base md:text-lg">
+                  {/* Role + duration */}
+                  <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                    <h4 className="min-w-0 max-w-full break-words text-sm font-bold sm:text-base md:text-lg">
                       {item.role}{" "}
                       <span className="text-muted-foreground">
                         · {item.company}
@@ -63,16 +63,18 @@ export default function Work() {
                     </span>
                   </div>
 
-                  <p className="mt-2 text-xs leading-5 text-muted-foreground sm:mt-3 sm:text-sm sm:leading-6 md:text-base md:leading-7">
+                  {/* Description */}
+                  <p className="mt-3 max-w-full break-words text-xs leading-5 text-muted-foreground sm:text-sm sm:leading-6 md:text-base md:leading-7">
                     {item.description}
                   </p>
 
+                  {/* Technologies */}
                   {item.tech && (
-                    <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
+                    <div className="mt-3 flex max-w-full flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
                       {item.tech.map((t) => (
                         <span
                           key={t}
-                          className="rounded-full bg-accent px-2.5 py-1 text-[10px] sm:px-3 sm:text-xs"
+                          className="shrink-0 rounded-full bg-accent px-2.5 py-1 text-[10px] sm:px-3 sm:text-xs"
                         >
                           {t}
                         </span>
