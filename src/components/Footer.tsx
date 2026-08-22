@@ -52,7 +52,6 @@ export default function Footer() {
                 {/* Bottom line */}
                 <div className="mt-10 flex flex-col items-center justify-between gap-2 text-xs text-neutral-400 dark:text-neutral-600 md:flex-row">
                     <p>&copy; {new Date().getFullYear()} Ritik Mishra</p>
-                    <p className="tracking-wide">Next.js &middot; Tailwind &middot; TypeScript</p>
                 </div>
             </div>
         </footer>
