@@ -51,7 +51,7 @@ export default function Hero() {
                             Ritik Mishra
                         </h1>
                     </div>
-                    <div className="absolute right-0 top-[192px] flex flex-col items-end gap-3 sm:top-[230px] md:left-155 md:right-auto md:flex-row md:items-center">
+                    <div className="absolute right-0 top-[192px] flex flex-col items-end gap-3 sm:top-[230px] md:left-161 md:right-auto md:flex-row md:items-center">
                         <h1 className="text-xl sm:text-2xl">
                             Get in Touch
                         </h1>
