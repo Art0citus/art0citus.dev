@@ -40,10 +40,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${pixel.variable}`}
     >
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen pb-16 antialiased md:pb-0">
         <ThemeProvider>
           {children}
         </ThemeProvider>
+
         <Script
           src="/oneko.js"
           strategy="afterInteractive"
