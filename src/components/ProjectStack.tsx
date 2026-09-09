@@ -25,7 +25,7 @@ export default function ProjectStack() {
         </div>
 
         {/* Projects */}
-        <ul className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8">
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
