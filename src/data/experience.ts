@@ -14,6 +14,6 @@ export const experience: ExperienceItem[] = [
     duration: "Jun 2026 — Present",
     description:
       "Building and shipping features across the stack, from API design to frontend polish.",
-    tech: ["Next.js", "Go", "PostgreSQL"],
+    tech: ["Next.js", "Java", "PostgreSQL"],
   },
 ];
