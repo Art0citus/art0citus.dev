@@ -159,7 +159,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative flex justify-center overflow-hidden bg-background px-4 pt-52 pb-40"
+      className="relative flex justify-center overflow-hidden px-4 pt-52 pb-40"
     >
       {/* Decorative background blobs */}
       <div className="pointer-events-none absolute inset-0">
