@@ -13,7 +13,6 @@ export default function Hero() {
     flex
     w-full
     justify-center
-    bg-background
     text-foreground
     transition-colors
     duration-300
