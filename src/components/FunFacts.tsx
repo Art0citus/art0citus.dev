@@ -49,7 +49,7 @@ export default function FunFacts() {
   return (
     <section
       id="personal"
-      className="flex justify-center bg-background px-4 pt-32 pb-48"
+      className="flex justify-center px-4 pt-32 pb-48"
     >
       <div className="flex w-full max-w-4xl flex-col items-start gap-12">
         <div className="w-full flex flex-col gap-4">
