@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
 
       <main className="flex flex-1 flex-col gap-24">
@@ -21,7 +21,7 @@ export default function Home() {
         <MotivationalQuote />
       </main>
 
-      <div className="h-20" />
+      <div className="h-0" />
 
       <Footer />
     </div>
