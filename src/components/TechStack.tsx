@@ -100,7 +100,7 @@ export default function TechStack() {
     return (
         <section
             id="tech"
-            className="flex justify-center bg-background px-4 py-20 sm:py-32"
+            className="flex justify-center px-4 py-20 sm:py-32"
         >
             <div className="flex w-full max-w-4xl flex-col gap-4">
                 <div className="flex items-center gap-4 sm:gap-8">
