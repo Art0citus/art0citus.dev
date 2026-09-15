@@ -157,7 +157,11 @@ html {
 
 @keyframes skyline {
   from {
-    transform: translateX(-40%);
+    /* Starts shifted one copy-width left, animates toward 0 — the pattern
+       drifts rightward (left-to-right), which is the direction that was
+       actually asked for. Two back-to-back copies + this -50%→0 sweep is
+       what keeps the loop seamless either direction. */
+    transform: translateX(-50%);
   }
 
   to {
@@ -166,7 +170,42 @@ html {
 }
 
 .animate-skyline {
-  animation: skyline 12s linear infinite;
+  animation: skyline 40s linear infinite;
+}
+
+/* Same seamless double-copy technique as .animate-skyline, just slower —
+   used for the cloud/wave divider so it drifts left-to-right too. */
+.animate-wave-drift {
+  animation: skyline 70s linear infinite;
+}
+
+@keyframes cloud-drift {
+  from {
+    /* `left` (not transform) so the travel distance is a percentage of
+       the section's own width — stays correct across every breakpoint
+       without needing per-size pixel values. */
+    left: -15%;
+  }
+
+  to {
+    left: 115%;
+  }
+}
+
+.animate-cloud-drift {
+  animation-name: cloud-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .project-card {
