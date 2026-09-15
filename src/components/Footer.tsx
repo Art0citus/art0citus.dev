@@ -12,11 +12,11 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer className="mt-[200px] w-full bg-background">
+        <footer className="mt-[200px] w-full">
             {/* Top divider — now spans the full viewport width */}
             <div className="h-px w-full bg-neutral-200 dark:bg-neutral-800" />
 
-            <div className="w-full px-8 py-12 sm:px-10 lg:px-16">
+            <div className="w-full px-8 py-18 sm:px-10 lg:px-16">
                 <div className="flex flex-col items-center gap-6 pt-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
                     {/* Wordmark */}
                     <Link
