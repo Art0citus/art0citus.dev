@@ -17,7 +17,7 @@ export default function Work() {
   return (
   <section
   id="work"
-  className="flex w-full justify-center bg-background px-5 py-20 sm:px-4 sm:py-24 md:py-32"
+  className="flex w-full justify-center px-5 py-20 sm:px-4 sm:py-24 md:py-32"
 >
   <div className="flex w-full min-w-0 max-w-4xl flex-col gap-4">
     <div className="mb-14 flex min-w-0 flex-col gap-3 sm:mb-20 md:mb-24 md:gap-4">
