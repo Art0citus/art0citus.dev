@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export default function BlogPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
 
       <main className="flex-1">
