@@ -5,6 +5,7 @@ import "./globals.css";
 import Script from "next/script";
 
 import ThemeProvider from "@/components/ThemeProvider";
+import Starfield from "@/components/Starfield";
 
 const geistSans = localFont({
   src: "../../public/fonts/GeistVF.woff",
@@ -40,10 +41,14 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${pixel.variable}`}
     >
-      <body className="min-h-screen pb-16 antialiased md:pb-0">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+      <body className="min-h-screen bg-background pb-16 text-foreground antialiased md:pb-0">
+        <Starfield />
+
+        <div className="relative z-10">
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </div>
 
         <Script
           src="/oneko.js"
