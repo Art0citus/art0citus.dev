@@ -5,7 +5,7 @@ export default function ProjectStack() {
   return (
     <section
       id="projects"
-      className="flex justify-center bg-background px-4 py-32"
+      className="flex justify-center px-4 py-32"
     >
       <div className="w-full max-w-4xl">
         {/* Header */}
