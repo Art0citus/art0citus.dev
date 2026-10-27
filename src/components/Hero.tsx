@@ -157,7 +157,7 @@ export default function Hero() {
                     {/* Resume */}
                     <div className="absolute left-0 top-[665px] sm:top-[675px] md:top-[650px]">
                         <LiquidButton
-                            href="/Ritik_Mishra_Resume.docx"
+                            href="/RitikMishraCV.pdf"
                             download
                         >
                             <Image
